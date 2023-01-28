@@ -16,5 +16,7 @@ namespace FilmSearcher.Models
         public MovieCategory Category { get; set; }
 
         public ActorMovie ActorMovies { get; set; }
+
+        public Cinema Cinema { get; set; }
     }
 }
