@@ -1,5 +1,6 @@
 ﻿using FilmSearcher.Data.Enum;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FilmSearcher.Models
 {
@@ -15,8 +16,17 @@ namespace FilmSearcher.Models
         public DateTime EndDate { get; set; }
         public MovieCategory Category { get; set; }
 
-        public ActorMovie ActorMovies { get; set; }
+        //Relationships
+        public List<ActorMovie> ActorsMovies { get; set; }
 
+        //Cinema
+        public int CinemaId { get; set; }
+        [ForeignKey("CinemaId")]
         public Cinema Cinema { get; set; }
+
+        //Producer
+        public int ProducerId { get; set; }
+        [ForeignKey("ProducerId")]
+        public Producer Producer { get; set; }
     }
 }
