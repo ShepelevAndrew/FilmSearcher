@@ -13,30 +13,37 @@ namespace FilmSearcher.Data.Services.Implementation
             _dbContext = dbContext;
         }
 
-        public void Add(Actor actor)
+        public async Task AddAsync(Actor actor)
         {
-            throw new NotImplementedException();
+            await _dbContext.AddAsync(actor);
+            await _dbContext.SaveChangesAsync();
         }
 
-        public void Delete(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var actor = _dbContext.Actors.FirstOrDefault(a => a.ActorId == id);
+            _dbContext.Actors.Remove(actor);
+            await _dbContext.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Actor>> GetAll()
+        public async Task<IEnumerable<Actor>> GetAllAsync()
         {
             var actors = await _dbContext.Actors.ToListAsync();
             return actors;
         }
 
-        public Actor GetById(string id)
+        public async Task<Actor> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var actor = await _dbContext.Actors.FirstOrDefaultAsync(a => a.ActorId == id);
+            return actor;
         }
 
-        public Actor Update(int id, Actor actor)
+        public async Task<Actor> UpdateAsync(int id, Actor actor)
         {
-            throw new NotImplementedException();
+            actor.ActorId = id;
+            _dbContext.Update(actor);
+            await _dbContext.SaveChangesAsync();
+            return actor;
         }
     }
 }
