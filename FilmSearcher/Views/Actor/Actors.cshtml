@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Actor>
+
+@{
+    ViewData["Title"] = "Actors";
+}
+
+@foreach(var actor in Model) {
+    <div style="width: 250px; height: 350px; padding: 10px; border: 1px solid #999999; border-top-right-radius: 25px; border-bottom-left-radius: 25px; display: inline-block;">
+        <img src="@actor.ProfilePictureURL" style="width: 170px; height: 230px;">
+        <p>@actor.FullName</p>
+        <p>@actor.Bio</p>
+    </div>
+}
