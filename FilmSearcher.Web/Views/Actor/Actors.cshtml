@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Actor>
+
+@{
+    ViewData["Title"] = "Actors";
+}
+
+@foreach(var actor in Model) {
+    <div style="width: 250px; height: 100%; padding: 10px; border: 1px solid #999999; border-top-right-radius: 25px; border-bottom-left-radius: 25px; display: inline-block;">
+        <img src="@actor.ProfilePictureURL" style="width: 170px; height: 230px;">
+        <p>@actor.FullName</p>
+        <p>@actor.Bio</p>
+        <a asp-action="Edit" asp-route-id="@actor.ActorId"><div class="button">Edit</div></a>
+        <a asp-action="Delete" asp-route-id="@actor.ActorId"><div class="button">Delete</div></a>
+        <a asp-action="Details" asp-route-id="@actor.ActorId"><div class="button">Details</div></a>
+    </div>
+}
+<div class="button add"><a asp-controller="Actor" asp-action="Create">Add</a></div>
+
+<style>
+    a {
+        color: black;
+        text-decoration:none;
+    }
+    .button {
+        width: 70px;
+        height: 50px;
+        background-color: #999999;
+        text-align: center;
+        padding-top: 13px;
+        display: inline-block;
+        cursor: pointer;
+    }
+    .add {
+        height: 50px;
+        position: fixed;
+    }
+</style>
