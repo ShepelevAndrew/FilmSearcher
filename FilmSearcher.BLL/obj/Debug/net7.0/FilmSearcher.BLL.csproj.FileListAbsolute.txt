@@ -1,0 +1,15 @@
+Q:\GitHub\FilmSearcherWebApp\FilmSearcher.BLL\obj\Debug\net7.0\FilmSearcher.BLL.csproj.AssemblyReference.cache
+Q:\GitHub\FilmSearcherWebApp\FilmSearcher.BLL\obj\Debug\net7.0\FilmSearcher.BLL.GeneratedMSBuildEditorConfig.editorconfig
+Q:\GitHub\FilmSearcherWebApp\FilmSearcher.BLL\obj\Debug\net7.0\FilmSearcher.BLL.AssemblyInfoInputs.cache
+Q:\GitHub\FilmSearcherWebApp\FilmSearcher.BLL\obj\Debug\net7.0\FilmSearcher.BLL.AssemblyInfo.cs
+Q:\GitHub\FilmSearcherWebApp\FilmSearcher.BLL\obj\Debug\net7.0\FilmSearcher.BLL.csproj.CoreCompileInputs.cache
+Q:\GitHub\FilmSearcherWebApp\FilmSearcher.BLL\bin\Debug\net7.0\FilmSearcher.BLL.deps.json
+Q:\GitHub\FilmSearcherWebApp\FilmSearcher.BLL\bin\Debug\net7.0\FilmSearcher.BLL.dll
+Q:\GitHub\FilmSearcherWebApp\FilmSearcher.BLL\bin\Debug\net7.0\FilmSearcher.BLL.pdb
+Q:\GitHub\FilmSearcherWebApp\FilmSearcher.BLL\bin\Debug\net7.0\FilmSearcher.DAL.dll
+Q:\GitHub\FilmSearcherWebApp\FilmSearcher.BLL\bin\Debug\net7.0\FilmSearcher.DAL.pdb
+Q:\GitHub\FilmSearcherWebApp\FilmSearcher.BLL\obj\Debug\net7.0\FilmSearcher.BLL.csproj.CopyComplete
+Q:\GitHub\FilmSearcherWebApp\FilmSearcher.BLL\obj\Debug\net7.0\FilmSearcher.BLL.dll
+Q:\GitHub\FilmSearcherWebApp\FilmSearcher.BLL\obj\Debug\net7.0\refint\FilmSearcher.BLL.dll
+Q:\GitHub\FilmSearcherWebApp\FilmSearcher.BLL\obj\Debug\net7.0\FilmSearcher.BLL.pdb
+Q:\GitHub\FilmSearcherWebApp\FilmSearcher.BLL\obj\Debug\net7.0\ref\FilmSearcher.BLL.dll

@@ -1,0 +1,12 @@
+Q:\GitHub\FilmSearcherWebApp\FilmSearcher.DAL\obj\Debug\net7.0\FilmSearcher.DAL.csproj.AssemblyReference.cache
+Q:\GitHub\FilmSearcherWebApp\FilmSearcher.DAL\obj\Debug\net7.0\FilmSearcher.DAL.GeneratedMSBuildEditorConfig.editorconfig
+Q:\GitHub\FilmSearcherWebApp\FilmSearcher.DAL\obj\Debug\net7.0\FilmSearcher.DAL.AssemblyInfoInputs.cache
+Q:\GitHub\FilmSearcherWebApp\FilmSearcher.DAL\obj\Debug\net7.0\FilmSearcher.DAL.AssemblyInfo.cs
+Q:\GitHub\FilmSearcherWebApp\FilmSearcher.DAL\obj\Debug\net7.0\FilmSearcher.DAL.csproj.CoreCompileInputs.cache
+Q:\GitHub\FilmSearcherWebApp\FilmSearcher.DAL\bin\Debug\net7.0\FilmSearcher.DAL.deps.json
+Q:\GitHub\FilmSearcherWebApp\FilmSearcher.DAL\bin\Debug\net7.0\FilmSearcher.DAL.dll
+Q:\GitHub\FilmSearcherWebApp\FilmSearcher.DAL\bin\Debug\net7.0\FilmSearcher.DAL.pdb
+Q:\GitHub\FilmSearcherWebApp\FilmSearcher.DAL\obj\Debug\net7.0\FilmSearcher.DAL.dll
+Q:\GitHub\FilmSearcherWebApp\FilmSearcher.DAL\obj\Debug\net7.0\refint\FilmSearcher.DAL.dll
+Q:\GitHub\FilmSearcherWebApp\FilmSearcher.DAL\obj\Debug\net7.0\FilmSearcher.DAL.pdb
+Q:\GitHub\FilmSearcherWebApp\FilmSearcher.DAL\obj\Debug\net7.0\ref\FilmSearcher.DAL.dll
