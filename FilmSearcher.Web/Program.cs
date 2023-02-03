@@ -1,8 +1,8 @@
 using FilmSearcher.BLL.Services.Implementation;
 using FilmSearcher.BLL.Services.Interfaces;
 using FilmSearcher.DAL.EF;
+using FilmSearcher.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,8 +10,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ApplicationDbContext>(
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString"))
 );
-builder.Services.AddScoped<IActorService, ActorService>();
-builder.Services.AddScoped<IMovieService, MovieService>();
+builder.Services.AddScoped<ICrudService<Actor>, ActorService>();
+builder.Services.AddScoped<ICrudService<Cinema>, CinemaService>();
+builder.Services.AddScoped<ICrudService<Movie>, MovieService>();
+builder.Services.AddScoped<ICrudService<Producer>, ProducerService>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
