@@ -1,0 +1,25 @@
+﻿@model Cinema
+
+@{
+    ViewData["Title"] = "Edit cinema";
+}
+
+<form asp-action="Edit" method="post">
+    <div>
+        <label>LogoURL</label>
+        <input asp-for="Logo" type="text" />
+    </div>
+    <div>
+        <label>Name</label>
+        <input asp-for="Name" type="text" />
+    </div>
+    <div>
+        <label>Description</label>
+        <input asp-for="Description" type="text" />
+    </div>
+    <div>
+        <input type="submit" value="Update" />
+        <a asp-action="Delete" asp-route-id="@Model.CinemaId"><div class="button">Delete</div></a>
+        <a asp-action="Cinemas">Show all</a>
+    </div>
+</form>

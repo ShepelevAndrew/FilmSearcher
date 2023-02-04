@@ -6,9 +6,9 @@ namespace FilmSearcher.Web.Controllers
 {
     public class ActorController : Controller
     {
-        private readonly IActorService _actorService;
+        private readonly ICrudService<Actor> _actorService;
 
-        public ActorController(IActorService actorService)
+        public ActorController(ICrudService<Actor> actorService)
         {
             _actorService = actorService;
         }
@@ -66,24 +66,15 @@ namespace FilmSearcher.Web.Controllers
             return RedirectToAction(nameof(Actors));
         }
 
+        [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
             var actor = await _actorService.GetByIdAsync(id);
 
             if (actor == null) return View("NotFound");
 
-            return View(actor);
-        }
-
-        [HttpPost, ActionName("Delete")]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var actor = await _actorService.GetByIdAsync(id);
-
-            if (actor == null) return View("NotFound");
-
             await _actorService.DeleteAsync(id);
-            return RedirectToAction(nameof(Actors));
+            return RedirectToAction("Actors");
         }
     }
 }

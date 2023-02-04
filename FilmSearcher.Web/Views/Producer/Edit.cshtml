@@ -1,10 +1,10 @@
-﻿@model Actor
+﻿@model Producer
 
 @{
-    ViewData["Title"] = "Edit actor";
+    ViewData["Title"] = "Edit producer";
 }
 
-<form asp-controller="Actor" asp-action="Edit" method="post">
+<form asp-action="Edit" method="post">
     <div>
         <label>PictureURL</label>
         <input asp-for="ProfilePictureURL" type="text" />
@@ -14,12 +14,12 @@
         <input asp-for="FullName" type="text" />
     </div>
     <div>
-        <label>Bio</label>
+        <label>Biography</label>
         <input asp-for="Bio" type="text" />
     </div>
     <div>
         <input type="submit" value="Update" />
-        <a asp-action="Delete" asp-route-id="@Model.ActorId"><div class="button">Delete</div></a>
-        <a asp-controller="Actor" asp-action="Actors">Show all</a>
+        <a asp-action="Delete" asp-route-id="@Model.ProducerId"><div class="button">Delete</div></a>
+        <a asp-action="Producers">Show all</a>
     </div>
 </form>

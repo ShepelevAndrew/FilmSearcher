@@ -1,0 +1,38 @@
+﻿@model Movie
+
+@{
+    ViewData["Title"] = "Movie";
+}
+
+<form asp-action="Details" method="post">
+    <div class="container">
+        <div>
+            <img src="@Model.ImageURL"</img>
+        </div>
+        <div class="content">
+            <div>
+                <label>Movie id: </label>
+                <span>@Model.MovieId</span>
+            </div>
+            <div>
+                <span>@Model.Name</span>
+            </div>
+            <div>
+                <label>Description: </label>
+                <span>@Model.Description</span>
+            </div>
+            <a asp-action="Movies">Show all</a>
+        </div>
+    </div>
+</form>
+
+<style>
+    .container {
+        display: flex;
+        justify-content: center;
+    }
+    img {
+        max-height: 500px;
+        max-width: 400px;
+    }
+</style>

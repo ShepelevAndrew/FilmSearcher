@@ -24,16 +24,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0b3JcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[Q:/GitHub/FilmSearcherWebApp/FilmSearcher.Web/Views/Actor/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0b3JcRGVsZXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [Q:/GitHub/FilmSearcherWebApp/FilmSearcher.Web/Views/Actor/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0b3JcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [Q:/GitHub/FilmSearcherWebApp/FilmSearcher.Web/Views/Actor/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0b3JcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[Q:/GitHub/FilmSearcherWebApp/FilmSearcher.Web/Views/Cinema/Cinemas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2luZW1hXENpbmVtYXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[Q:/GitHub/FilmSearcherWebApp/FilmSearcher.Web/Views/Cinema/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2luZW1hXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[Q:/GitHub/FilmSearcherWebApp/FilmSearcher.Web/Views/Cinema/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2luZW1hXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[Q:/GitHub/FilmSearcherWebApp/FilmSearcher.Web/Views/Cinema/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2luZW1hXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [Q:/GitHub/FilmSearcherWebApp/FilmSearcher.Web/Views/Home/Index.cshtml]
@@ -48,8 +60,32 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[Q:/GitHub/FilmSearcherWebApp/FilmSearcher.Web/Views/Movie/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[Q:/GitHub/FilmSearcherWebApp/FilmSearcher.Web/Views/Movie/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [Q:/GitHub/FilmSearcherWebApp/FilmSearcher.Web/Views/Movie/Movies.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcTW92aWVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[Q:/GitHub/FilmSearcherWebApp/FilmSearcher.Web/Views/Producer/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjZXJcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[Q:/GitHub/FilmSearcherWebApp/FilmSearcher.Web/Views/Producer/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjZXJcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[Q:/GitHub/FilmSearcherWebApp/FilmSearcher.Web/Views/Producer/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjZXJcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[Q:/GitHub/FilmSearcherWebApp/FilmSearcher.Web/Views/Producer/Producers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjZXJcUHJvZHVjZXJzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [Q:/GitHub/FilmSearcherWebApp/FilmSearcher.Web/Views/Shared/Error.cshtml]

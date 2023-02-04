@@ -1,4 +1,5 @@
-﻿using FilmSearcher.BLL.Services.Interfaces;
+﻿using FilmSearcher.BLL.Services.Implementation;
+using FilmSearcher.BLL.Services.Interfaces;
 using FilmSearcher.DAL.Entities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,9 +7,9 @@ namespace FilmSearcher.Web.Controllers
 {
     public class MovieController : Controller
     {
-        private readonly IMovieService _movieService;
+        private readonly ICrudService<Movie> _movieService;
 
-        public MovieController(IMovieService movieService)
+        public MovieController(ICrudService<Movie> movieService)
         {
             _movieService = movieService;
         }
@@ -34,6 +35,46 @@ namespace FilmSearcher.Web.Controllers
 
             await _movieService.AddAsync(movie);
             return RedirectToAction(nameof(Movies));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var movie = await _movieService.GetByIdAsync(id);
+            if (movie == null) return View("NotFound");
+
+            await _movieService.DeleteAsync(id);
+            return RedirectToAction(nameof(Movies));
+        }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            var movie = await _movieService.GetByIdAsync(id);
+
+            if (movie == null) return View("NotFound");
+
+            return View(movie);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, [Bind("")] Movie movie)
+        {
+            /*if(!ModelState.IsValid)
+            {
+                return View();
+            }*/
+
+            await _movieService.UpdateAsync(id, movie);
+            return RedirectToAction(nameof(Movies));
+        }
+
+        public async Task<IActionResult> Details(int id)
+        {
+            var movie = await _movieService.GetByIdAsync(id);
+
+            if (movie == null) return View("NotFound");
+
+            return View(movie);
         }
     }
 }

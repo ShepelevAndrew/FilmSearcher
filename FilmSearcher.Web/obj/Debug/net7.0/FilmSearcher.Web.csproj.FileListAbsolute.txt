@@ -72,3 +72,8 @@ Q:\GitHub\FilmSearcherWebApp\FilmSearcher.Web\obj\Debug\net7.0\refint\FilmSearch
 Q:\GitHub\FilmSearcherWebApp\FilmSearcher.Web\obj\Debug\net7.0\FilmSearcher.Web.pdb
 Q:\GitHub\FilmSearcherWebApp\FilmSearcher.Web\obj\Debug\net7.0\FilmSearcher.Web.genruntimeconfig.cache
 Q:\GitHub\FilmSearcherWebApp\FilmSearcher.Web\obj\Debug\net7.0\ref\FilmSearcher.Web.dll
+Q:\GitHub\FilmSearcherWebApp\FilmSearcher.Web\bin\Debug\net7.0\Humanizer.dll
+Q:\GitHub\FilmSearcherWebApp\FilmSearcher.Web\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+Q:\GitHub\FilmSearcherWebApp\FilmSearcher.Web\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+Q:\GitHub\FilmSearcherWebApp\FilmSearcher.Web\bin\Debug\net7.0\Mono.TextTemplating.dll
+Q:\GitHub\FilmSearcherWebApp\FilmSearcher.Web\bin\Debug\net7.0\System.CodeDom.dll

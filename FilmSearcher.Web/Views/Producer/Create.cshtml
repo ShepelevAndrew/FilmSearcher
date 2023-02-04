@@ -1,10 +1,10 @@
-﻿@model Actor
+﻿@model Producer
 
 @{
-    ViewData["Title"] = "Create actor";
+    ViewData["Title"] = "Create producer";
 }
 
-<form asp-controller="Actor" asp-action="Create" method="post">
+<form asp-action="Create" method="post">
     <div>
         <label>PictureURL</label>
         <input asp-for="ProfilePictureURL" type="text" />
@@ -19,6 +19,6 @@
     </div>
     <div>
         <input type="submit" value="Create" />
-        <a asp-controller="Actor" asp-action="Actors">Show all</a>
+        <a asp-action="Producers">Show all</a>
     </div>
 </form>

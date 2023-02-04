@@ -1,28 +1,25 @@
-﻿@model IEnumerable<Movie>
+﻿@model IEnumerable<Cinema>
 
 @{
-    ViewData["Title"] = "Movies";
+    ViewData["Title"] = "Cinemas";
 }
 
-@foreach (var movie in Model)
+@foreach (var cinema in Model)
 {
     <div class="card">
-        <a class="card-link" asp-action="Details" asp-route-id="@movie.MovieId">
+        <a class="card-link" asp-action="Details" asp-route-id="@cinema.CinemaId">
             <div class="container">
-                <img src="@movie.ImageURL" style="width: 170px; height: 230px;">
+                <img src="@cinema.Logo" style="width: 170px; height: 230px;">
                 <div class="card-content">
-                    <p>@movie.Name</p>
-                    <p>@movie.Category</p>
-                    <p>@movie.StartDate.ToShortDateString()</p>
-                    <p>@movie.EndDate.ToShortDateString()</p>
+                    <p>@cinema.Name</p>
                 </div>
             </div>
-            <p class="card-description">@movie.Description</p>
+            <p class="card-description">@cinema.Description</p>
         </a>
-        <a asp-action="Edit" asp-route-id="@movie.MovieId"><div class="button">e</div></a>
+        <a asp-action="Edit" asp-route-id="@cinema.CinemaId"><div class="button">e</div></a>
     </div>
 }
-<div class="add"><a asp-controller="Movie" asp-action="Create">Add</a></div>
+<div class="add"><a asp-action="Create">Add</a></div>
 
 <style>
     p {

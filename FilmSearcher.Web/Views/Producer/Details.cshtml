@@ -1,0 +1,38 @@
+﻿@model Producer
+
+@{
+    ViewData["Title"] = "Producer";
+}
+
+<form asp-action="Details" method="post">
+    <div class="container">
+        <div>
+            <img src="@Model.ProfilePictureURL"</img>
+        </div>
+        <div class="content">
+            <div>
+                <label>Producer id: </label>
+                <span>@Model.ProducerId</span>
+            </div>
+            <div>
+                <span>@Model.FullName</span>
+            </div>
+            <div>
+                <label>Biography: </label>
+                <span>@Model.Bio</span>
+            </div>
+            <a asp-action="Producers">Show all</a>
+        </div>
+    </div>
+</form>
+
+<style>
+    .container {
+        display: flex;
+        justify-content: center;
+    }
+    img {
+        max-height: 500px;
+        max-width: 400px;
+    }
+</style>
