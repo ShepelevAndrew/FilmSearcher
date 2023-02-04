@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FilmSearcher.BLL.Services.Implementation
 {
-    public class MovieService : IMovieService
+    public class MovieService : ICrudService<Movie>
     {
         private readonly ApplicationDbContext _dbContext;
 
@@ -24,6 +24,25 @@ namespace FilmSearcher.BLL.Services.Implementation
         {
             var movies = await _dbContext.Movies.ToListAsync();
             return movies;
+        }
+
+        public async Task<Movie> GetByIdAsync(int id)
+        {
+            var movie = await _dbContext.Movies.FirstOrDefaultAsync(m => m.MovieId == id);
+            return movie;
+        }
+
+        public async Task UpdateAsync(int id, Movie movie)
+        {
+            movie.MovieId = id;
+            _dbContext.Movies.Update(movie);
+            await _dbContext.SaveChangesAsync();
+        }
+        public async Task DeleteAsync(int id)
+        {
+            var movie = _dbContext.Movies.FirstOrDefault(m => m.MovieId == id);
+            _dbContext.Movies.Remove(movie);
+            await _dbContext.SaveChangesAsync();
         }
     }
 }

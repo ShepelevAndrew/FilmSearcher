@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FilmSearcher.BLL.Services.Implementation
 {
-    public class ActorService : IActorService
+    public class ActorService : ICrudService<Actor>
     {
         private readonly ApplicationDbContext _dbContext;
 
@@ -39,12 +39,11 @@ namespace FilmSearcher.BLL.Services.Implementation
             return actor;
         }
 
-        public async Task<Actor> UpdateAsync(int id, Actor actor)
+        public async Task UpdateAsync(int id, Actor actor)
         {
             actor.ActorId = id;
             _dbContext.Update(actor);
             await _dbContext.SaveChangesAsync();
-            return actor;
         }
     }
 }
