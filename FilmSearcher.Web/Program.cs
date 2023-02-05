@@ -1,4 +1,4 @@
-using FilmSearcher.BLL.Services.Implementation;
+using FilmSearcher.BLL.Services.Implementations;
 using FilmSearcher.BLL.Services.Interfaces;
 using FilmSearcher.DAL.EF;
 using FilmSearcher.DAL.Entities;
@@ -14,6 +14,9 @@ builder.Services.AddScoped<ICrudService<Actor>, ActorService>();
 builder.Services.AddScoped<ICrudService<Cinema>, CinemaService>();
 builder.Services.AddScoped<ICrudService<Movie>, MovieService>();
 builder.Services.AddScoped<ICrudService<Producer>, ProducerService>();
+
+builder.Services.AddScoped<ISearchService<Actor>, SearchActorService>();
+builder.Services.AddScoped<ISearchService<Movie>, SearchMovieService>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
