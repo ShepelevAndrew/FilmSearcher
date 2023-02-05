@@ -3,7 +3,7 @@ using FilmSearcher.DAL.EF;
 using FilmSearcher.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace FilmSearcher.BLL.Services.Implementation
+namespace FilmSearcher.BLL.Services.Implementations
 {
     public class MovieService : ICrudService<Movie>
     {

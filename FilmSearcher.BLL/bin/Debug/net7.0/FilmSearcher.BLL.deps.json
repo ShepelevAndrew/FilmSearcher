@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v7.0": {
       "FilmSearcher.BLL/1.0.0": {
         "dependencies": {
-          "FilmSearcher.DAL": "1.0.0"
+          "FilmSearcher.DAL": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "7.0.2"
         },
         "runtime": {
           "FilmSearcher.BLL.dll": {}
