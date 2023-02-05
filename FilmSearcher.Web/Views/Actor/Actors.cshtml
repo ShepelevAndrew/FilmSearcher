@@ -4,6 +4,12 @@
     ViewData["Title"] = "Actors";
 }
 
+<form asp-controller="Actor" asp-action="Actors" method="get">
+    <p>
+        Title: <input type="text" name="searchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
 @foreach(var actor in Model) {
         <div class="card" style="width: 230px; height: 100%; padding: 10px; border: 1px solid #999999; border-radius: 5px; display: inline-block;">
             <a asp-action="Details" asp-route-id="@actor.ActorId">
@@ -43,8 +49,8 @@
 </style>
 
 <script type="text/jscript">
-    function DeleteActor(id) {
-        let path = "/Actor/Delete/" + id;
+    function Search(id) {
+        let path = "/Actor/Search";
         $.get(path);
     };
 </script>

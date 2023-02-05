@@ -4,17 +4,25 @@
     ViewData["Title"] = "Movies";
 }
 
+
+<form asp-controller="Movie" asp-action="Movies" method="get">
+    <p>
+        Title: <input type="text" name="searchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
 @foreach (var movie in Model)
 {
     <div class="card">
         <a class="card-link" asp-action="Details" asp-route-id="@movie.MovieId">
+            <div style="padding-left: 10px; padding-top: 9px; font-size: 20px; font-weight: bold; width: 100%; height: 50px; background-color: #999999">@movie.Name</div>
             <div class="container">
-                <img src="@movie.ImageURL" style="width: 170px; height: 230px;">
+                <img src="@movie.ImageURL" style="height: 300px;">
                 <div class="card-content">
-                    <p>@movie.Name</p>
                     <p>@movie.Category</p>
-                    <p>@movie.StartDate.ToShortDateString()</p>
-                    <p>@movie.EndDate.ToShortDateString()</p>
+                    <p>@movie.StartDate.ToString("dd MMM yy")</p>
+                    <p>@movie.EndDate.ToString("dd MMM yy")</p>
+                    <p>Status: @Html.Raw(GetStatus(movie.StartDate, movie.EndDate))</p>
                 </div>
             </div>
             <p class="card-description">@movie.Description</p>
@@ -24,9 +32,26 @@
 }
 <div class="add"><a asp-controller="Movie" asp-action="Create">Add</a></div>
 
+@{
+    string GetStatus(DateTime start, DateTime end)
+    {
+        var now = DateTime.Now;
+        var word = ""; var color = "";
+
+        if (start < now && now < end) { word = "проходить"; color = "green"; }
+        else if (now < start) { word = "скоро"; color = "blue"; }
+        else if (now > end) { word = "пройшло"; color = "red"; }
+        else { word = "похибка"; color = "red"; }
+
+        var html = $"<span style=\"background: {color}; padding: 0px 10px 5px 10px; border-radius: 10px;\">{word}</span>";
+
+        return html;
+    };
+}
+
 <style>
     p {
-        margin: 0px;
+        margin: 5px 0px 0px 0px;
     }
 
     a {
@@ -39,8 +64,7 @@
     }
 
     .card {
-        width: 300px;
-        height: 100%;
+        width: 350px;
         border: 1px solid #999999;
         border-radius: 5px;
         display: inline-block;
@@ -66,12 +90,12 @@
     }
 
     .button {
-        width: 20px;
-        height: 20px;
+        width: 25px;
+        height: 25px;
         position: absolute;
-        top: 5px;
-        right: 5px;
-        background-color: #999999;
+        top: 23px;
+        right: 23px;
+        background: white;
         text-align: center;
         display: inline-block;
         cursor: pointer;
