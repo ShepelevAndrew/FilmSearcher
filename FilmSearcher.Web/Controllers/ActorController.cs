@@ -7,15 +7,21 @@ namespace FilmSearcher.Web.Controllers
     public class ActorController : Controller
     {
         private readonly ICrudService<Actor> _actorService;
-
-        public ActorController(ICrudService<Actor> actorService)
+        private readonly ISearchService<Actor> _searchService;
+        
+        public ActorController(ICrudService<Actor> actorService, ISearchService<Actor> search)
         {
             _actorService = actorService;
+            _searchService = search;
         }
 
-        public async Task<IActionResult> Actors()
+        [HttpGet]
+        public async Task<IActionResult> Actors(string searchString = "")
         {
-            var actors = await _actorService.GetAllAsync();
+            var actors = searchString == "" 
+                ? await _actorService.GetAllAsync() 
+                : await _searchService.Search(searchString);
+
             return View(actors);
         }
 

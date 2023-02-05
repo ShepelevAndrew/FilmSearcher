@@ -1,23 +1,47 @@
-﻿using FilmSearcher.BLL.Services.Implementation;
+﻿using FilmSearcher.BLL.Services.Implementations;
 using FilmSearcher.BLL.Services.Interfaces;
 using FilmSearcher.DAL.Entities;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Cryptography.Xml;
+using System.Xml;
 
 namespace FilmSearcher.Web.Controllers
 {
     public class MovieController : Controller
     {
         private readonly ICrudService<Movie> _movieService;
+        private readonly ISearchService<Movie> _searchService;
 
-        public MovieController(ICrudService<Movie> movieService)
+        public MovieController(ICrudService<Movie> movieService, ISearchService<Movie> searchService)
         {
             _movieService = movieService;
+            _searchService = searchService;
         }
 
-        public async Task<IActionResult> Movies()
+        [HttpGet]
+        public async Task<IActionResult> Movies(string searchString = "")
         {
-            var movies = await _movieService.GetAllAsync();
-            return View(movies);
+            var movies = searchString == ""
+                ? await _movieService.GetAllAsync()
+                : await _searchService.Search(searchString);
+
+            var sortMovies = movies.OrderByDescending(m => m.StartDate).ToList();
+            for(int i = 0; i < sortMovies.Count(); i++)
+            {
+                if (sortMovies[i].StartDate > DateTime.Now)
+                {
+                    var temp = sortMovies[i];
+                    if (i + 1 < sortMovies.Count())
+                    {
+                        if (sortMovies[i + 1].EndDate > DateTime.Now) { 
+                            sortMovies[i] = sortMovies[i + 1];
+                            sortMovies[i + 1] = temp;
+                        }
+                    }
+                } 
+            }
+
+            return View(sortMovies);
         }
 
         public IActionResult Create()
