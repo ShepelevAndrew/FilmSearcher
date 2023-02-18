@@ -14,6 +14,17 @@ namespace FilmSearcher.BLL.Services.Implementations
             _dbContext = dbContext;
         }
 
+        public async Task<IEnumerable<Movie>> Filter(string filter)
+        {
+            var filterItems = _dbContext.Movies.ToList();
+
+            
+
+            
+
+            return filterItems;
+        }
+
         public async Task<IEnumerable<Movie>> Search(string searchString)
         {
             var searchItems = _dbContext.Movies.ToList().FindAll(x => x.Name.Contains(searchString));
