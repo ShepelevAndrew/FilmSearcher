@@ -1,6 +1,7 @@
 ﻿using FilmSearcher.BLL.Services.Implementations;
 using FilmSearcher.BLL.Services.Interfaces;
 using FilmSearcher.DAL.Entities;
+using FilmSearcher.DAL.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Cryptography.Xml;
 using System.Xml;
@@ -9,37 +10,42 @@ namespace FilmSearcher.Web.Controllers
 {
     public class MovieController : Controller
     {
-        private readonly ICrudService<Movie> _movieService;
+        private readonly IBaseRepository<Movie> _movieService;
         private readonly ISearchService<Movie> _searchService;
 
-        public MovieController(ICrudService<Movie> movieService, ISearchService<Movie> searchService)
+        public MovieController(IBaseRepository<Movie> movieService, ISearchService<Movie> searchService)
         {
             _movieService = movieService;
             _searchService = searchService;
         }
 
         [HttpGet]
-        public async Task<IActionResult> Movies(string searchString = "")
+        public async Task<IActionResult> Movies(string search = "")
         {
-            var movies = searchString == ""
+            var movies = search == ""
                 ? await _movieService.GetAllAsync()
-                : await _searchService.Search(searchString);
+                : await _searchService.Search(search);
 
+            #region sort
             var sortMovies = movies.OrderByDescending(m => m.StartDate).ToList();
-            for(int i = 0; i < sortMovies.Count(); i++)
-            {
-                if (sortMovies[i].StartDate > DateTime.Now)
+
+            for(int j = 0; j < sortMovies.Count; j++) { 
+                for(int i = 0; i < sortMovies.Count; i++)
                 {
-                    var temp = sortMovies[i];
-                    if (i + 1 < sortMovies.Count())
+                    if (sortMovies[i].StartDate > DateTime.Now)
                     {
-                        if (sortMovies[i + 1].EndDate > DateTime.Now) { 
-                            sortMovies[i] = sortMovies[i + 1];
-                            sortMovies[i + 1] = temp;
+                        var temp = sortMovies[i];
+                        if (i + 1 < sortMovies.Count)
+                        {
+                            if (sortMovies[i + 1].EndDate > DateTime.Now) { 
+                                sortMovies[i] = sortMovies[i + 1];
+                                sortMovies[i + 1] = temp;
+                            }
                         }
-                    }
-                } 
+                    } 
+                }
             }
+            #endregion
 
             return View(sortMovies);
         }

@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FilmSearcher.BLL.Services.Implementations
 {
-    public class MovieReposiroty : IBaseRepository<Movie>
+    public class MovieRepository : IBaseRepository<Movie>
     {
         private readonly ApplicationDbContext _dbContext;
 
-        public MovieReposiroty(ApplicationDbContext dbContext)
+        public MovieRepository(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
         }

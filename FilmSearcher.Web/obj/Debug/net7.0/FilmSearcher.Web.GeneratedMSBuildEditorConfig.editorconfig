@@ -16,6 +16,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = Q:\GitHub\FilmSearcherWebApp\FilmSearcher.Web
 build_property._RazorSourceGeneratorDebug = 
 
+[Q:/GitHub/FilmSearcherWebApp/FilmSearcher.Web/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[Q:/GitHub/FilmSearcherWebApp/FilmSearcher.Web/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [Q:/GitHub/FilmSearcherWebApp/FilmSearcher.Web/Views/Actor/Actors.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0b3JcQWN0b3JzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

@@ -1,4 +1,4 @@
-﻿using FilmSearcher.DAL.Domain;
+﻿using FilmSearcher.DAL.Domain.Enum;
 
 namespace FilmSearcher.DAL.Entities
 {

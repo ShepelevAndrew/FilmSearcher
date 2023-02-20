@@ -1,14 +1,15 @@
 ﻿using FilmSearcher.BLL.Services.Interfaces;
 using FilmSearcher.DAL.Entities;
+using FilmSearcher.DAL.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FilmSearcher.Web.Controllers
 {
     public class ProducerController : Controller
     {
-        private readonly ICrudService<Producer> _producerService;
+        private readonly IBaseRepository<Producer> _producerService;
 
-        public ProducerController(ICrudService<Producer> producerService)
+        public ProducerController(IBaseRepository<Producer> producerService)
         {
             _producerService = producerService;
         }

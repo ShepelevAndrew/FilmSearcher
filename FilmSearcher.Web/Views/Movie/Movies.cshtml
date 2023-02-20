@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Movie>
+﻿@using Microsoft.AspNetCore.Mvc.Razor;
+@model IEnumerable<Movie>
 
 @{
     ViewData["Title"] = "Movies";
@@ -6,89 +7,78 @@
 
 
 <form asp-controller="Movie" asp-action="Movies" method="get">
-    <p>
-        Title: <input type="text" name="searchString" />
-        <input type="submit" value="Filter" />
-    </p>
+    <div class="container-form">
+        <div>
+            Search: <input type="text" name="search" />
+            <input type="submit" value="Filter" />
+        </div>
+        <div class="add"><a asp-controller="Movie" asp-action="Create">Add</a></div>
+    </div>
 </form>
+
+<div class="card-container">
 @foreach (var movie in Model)
 {
     <div class="card">
-        <a class="card-link" asp-action="Details" asp-route-id="@movie.MovieId">
-            <div style="padding-left: 10px; padding-top: 9px; font-size: 20px; font-weight: bold; width: 100%; height: 50px; background-color: #999999">@movie.Name</div>
-            <div class="container">
-                <img src="@movie.ImageURL" style="height: 300px;">
-                <div class="card-content">
-                    <p>@movie.Category</p>
-                    <p>@movie.StartDate.ToString("dd MMM yy")</p>
-                    <p>@movie.EndDate.ToString("dd MMM yy")</p>
-                    <p>Status: @Html.Raw(GetStatus(movie.StartDate, movie.EndDate))</p>
+        <a asp-action="Details" asp-route-id="@movie.MovieId">
+            <div class="card-filing">
+                <div class="card-header">
+                    <img src="@movie.ImageURL" alt="img-card" class="card-img">
+                    @if(!User.Identity.IsAuthenticated) {
+                        <a asp-controller="Account" asp-action="Register"><div class="card-bookmark"><img src="~/img/icon/bookmark-yellow.png" alt="bookmark"></div></a>
+                    }
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <div class="card-bookmark"><img src = "~/img/icon/bookmark-yellow.png" alt="bookmark"></div>
+                    }
+                    <div class="card-score"><img src="~/img/icon/star.png" alt="star" class="icon"><span>9.4</span></div>
+                    <div class="card-icon-details"></div>
+                </div>
+                <div class="card-info">
+                    <div class="card-info-header">
+                        <h1>@movie.Name</h1>
+                        @Html.Raw(GetStatus(movie.StartDate, movie.EndDate))
+                    </div>
+                    <ul>
+                        <li>@movie.EndDate.ToString("yyy")</li>
+                        <li>@movie.Category</li>
+                        <li>45min</li>
+                        <li>16+</li>
+                        <li>USA</li>
+                    </ul>
+                    <p>Director: @movie.ProducerId</p>
                 </div>
             </div>
-            <p class="card-description">@movie.Description</p>
         </a>
-        <a asp-action="Edit" asp-route-id="@movie.MovieId"><div class="button">e</div></a>
+        @if (User.IsInRole("Admin"))
+        {
+            <a asp-controller="Movie" asp-action="Delete" asp-route-id="@movie.MovieId"><div class="card-info-icon"><img src="~/img/icon/remove.png" /></div></a>
+        }
+        @if (User.IsInRole("Moderator"))
+        {
+            <a asp-controller="Movie" asp-action="Edit" asp-route-id="@movie.MovieId"><div class="card-info-icon"><img src="~/img/icon/edit.png" /></div></a>
+        }
     </div>
 }
-<div class="add"><a asp-controller="Movie" asp-action="Create">Add</a></div>
+</div>
 
 @{
     string GetStatus(DateTime start, DateTime end)
     {
         var now = DateTime.Now;
-        var word = ""; var color = "";
+        var word = ""; var cssClass = "";
 
-        if (start < now && now < end) { word = "проходить"; color = "green"; }
-        else if (now < start) { word = "скоро"; color = "blue"; }
-        else if (now > end) { word = "пройшло"; color = "red"; }
-        else { word = "похибка"; color = "red"; }
+        if (start < now && now < end) { word = "Новий"; cssClass = "card-status-new"; }
+        else if (now < start) { word = "Скоро"; cssClass = "card-status-future"; }
+        else if (now > end && end.Year == now.Year) { word = "Пройшло"; cssClass = "card-status-last"; }
 
-        var html = $"<span style=\"background: {color}; padding: 0px 10px 5px 10px; border-radius: 10px;\">{word}</span>";
+        var html = $"<div class=\"card-status {cssClass}\"><span>{word}</span></div>";
 
         return html;
     };
 }
 
 <style>
-    p {
-        margin: 5px 0px 0px 0px;
-    }
-
-    a {
-        color: black;
-        text-decoration: none;
-    }
-
-    a:hover {
-        color: black;
-    }
-
-    .card {
-        width: 350px;
-        border: 1px solid #999999;
-        border-radius: 5px;
-        display: inline-block;
-    }
-
-    .card-link {
-        display: block;
-        padding: 10px;
-    }
-
-    .container {
-        padding: 0px;
-        display: flex;
-    }
-
-    .card-content {
-        margin-left: 5px;
-    }
-
-    .card-description {
-        height: 140px;
-        overflow: hidden;
-    }
-
     .button {
         width: 25px;
         height: 25px;
@@ -105,7 +95,6 @@
         display: inline-block;
         background-color: #999999;
         width: 70px;
-        height: 50px;
-        position: fixed;
+        height: 35px;
     }
 </style>

@@ -2,21 +2,35 @@ using FilmSearcher.BLL.Services.Implementations;
 using FilmSearcher.BLL.Services.Interfaces;
 using FilmSearcher.DAL.EF;
 using FilmSearcher.DAL.Entities;
+using FilmSearcher.DAL.Repositories.Implementations;
+using FilmSearcher.DAL.Repositories.Interfaces;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDbContext<ApplicationDbContext>(
-    options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString"))
+    options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString"), 
+                                    b => b.MigrationsAssembly("FilmSearcher.Web"))
 );
-builder.Services.AddScoped<ICrudService<Actor>, ActorService>();
-builder.Services.AddScoped<ICrudService<Cinema>, CinemaService>();
-builder.Services.AddScoped<ICrudService<Movie>, MovieService>();
-builder.Services.AddScoped<ICrudService<Producer>, ProducerService>();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+        options.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+    });
 
-builder.Services.AddScoped<ISearchService<Actor>, SearchActorService>();
-builder.Services.AddScoped<ISearchService<Movie>, SearchMovieService>();
+builder.Services.AddScoped<IBaseRepository<User>, UserRepository>()
+                .AddScoped<IBaseRepository<Actor>, ActorRepository>()
+                .AddScoped<IBaseRepository<Cinema>, CinemaRepository>()
+                .AddScoped<IBaseRepository<Movie>, MovieRepository>()
+                .AddScoped<IBaseRepository<Producer>, ProducerRepository>();
+
+builder.Services.AddScoped<ISearchService<Actor>, SearchActorService>()
+                .AddScoped<ISearchService<Movie>, SearchMovieService>()
+                .AddScoped<IAccountService, AccountService>();
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -34,6 +48,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

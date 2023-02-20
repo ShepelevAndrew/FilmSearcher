@@ -1,15 +1,16 @@
 ﻿using FilmSearcher.BLL.Services.Interfaces;
 using FilmSearcher.DAL.Entities;
+using FilmSearcher.DAL.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FilmSearcher.Web.Controllers
 {
     public class ActorController : Controller
     {
-        private readonly ICrudService<Actor> _actorService;
+        private readonly IBaseRepository<Actor> _actorService;
         private readonly ISearchService<Actor> _searchService;
         
-        public ActorController(ICrudService<Actor> actorService, ISearchService<Actor> search)
+        public ActorController(IBaseRepository<Actor> actorService, ISearchService<Actor> search)
         {
             _actorService = actorService;
             _searchService = search;

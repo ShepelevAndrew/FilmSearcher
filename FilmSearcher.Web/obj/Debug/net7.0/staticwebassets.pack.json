@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\FilmSearcher.Web.bundle.scp.css"
     },
     {
+      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\css\\movies-style.css",
+      "PackagePath": "staticwebassets\\css\\movies-style.css"
+    },
+    {
       "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -13,188 +17,36 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\icon\\bookmark-fill-yellow.png",
+      "PackagePath": "staticwebassets\\img\\icon\\bookmark-fill-yellow.png"
+    },
+    {
+      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\icon\\bookmark-yellow.png",
+      "PackagePath": "staticwebassets\\img\\icon\\bookmark-yellow.png"
+    },
+    {
+      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\icon\\edit-hover.png",
+      "PackagePath": "staticwebassets\\img\\icon\\edit-hover.png"
+    },
+    {
+      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\icon\\edit.png",
+      "PackagePath": "staticwebassets\\img\\icon\\edit.png"
+    },
+    {
+      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\icon\\menu-dots.png",
+      "PackagePath": "staticwebassets\\img\\icon\\menu-dots.png"
+    },
+    {
+      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\icon\\remove.png",
+      "PackagePath": "staticwebassets\\img\\icon\\remove.png"
+    },
+    {
+      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\icon\\star.png",
+      "PackagePath": "staticwebassets\\img\\icon\\star.png"
+    },
+    {
       "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\LICENSE",
-      "PackagePath": "staticwebassets\\lib\\bootstrap"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
-    },
-    {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
       "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",

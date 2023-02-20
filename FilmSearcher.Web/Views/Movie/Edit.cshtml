@@ -1,45 +1,132 @@
-﻿@model Movie
+﻿@using FilmSearcher.DAL.Domain.Enum;
+@model Movie
 
 @{
     ViewData["Title"] = "Edit movie";
 }
 
 <form asp-controller="Movie" asp-action="Edit" method="post">
-    <div>
-        <label>ImageURL</label>
-        <input asp-for="ImageURL" type="text" />
-    </div>
-    <div>
-        <label>Name</label>
-        <input asp-for="Name" type="text" />
-    </div>
-    <div>
-        <label>Category</label>
-        <input asp-for="Category" type="text" />
-    </div>
-    <div>
-        <label>Descriotion</label>
-        <input asp-for="Description" type="text" />
-    </div>
-    <div>
-        <label>Start</label>
-        <input asp-for="StartDate" type="text" />
-    </div>
-    <div>
-        <label>End</label>
-        <input asp-for="EndDate" type="text" />
-    </div>
-    <div>
-        <label>ProducerId</label>
-        <input asp-for="ProducerId" type="text" />
-    </div>
-    <div>
-        <label>CinemaId</label>
-        <input asp-for="CinemaId" type="text" />
-    </div>
-    <div>
-        <input type="submit" value="Update" />
-        <a asp-action="Delete" asp-route-id="@Model.MovieId"><div class="button">Delete</div></a>
-        <a asp-action="Movies">Show all</a>
+    <div class="container">
+        <div>
+            <div>
+                <label>ImageURL:</label>
+                <input asp-for="ImageURL" type="text" />
+            </div>
+            <img style="width: 300px; margin-top: 20px" src="@Model.ImageURL" />
+        </div>
+        <div class="container-info">
+            <div>
+                <label>Name:</label>
+                <input asp-for="Name" type="text" />
+            </div>
+            <div>
+                <label>Category:</label>
+                <select asp-for="Category">
+                    @foreach (var item in Enum.GetValues(typeof(MovieCategory)))
+                    {
+                        int num = (int)item;
+                        MovieCategory name = (MovieCategory)item;
+
+                        <option value="@num">@name</option>
+                    }
+                </select>
+            </div>
+            <div>
+                <label>Start:</label>
+                <input asp-for="StartDate" type="date" />
+            </div>
+            <div>
+                <label>End:</label>
+                <input asp-for="EndDate" type="date" />
+            </div>
+            <div>
+                <label>Producer:</label>
+                <input asp-for="ProducerId" type="text" />
+            </div>
+            <div>
+                <label>//Actors:</label>
+                <input asp-for="ProducerId" type="text" />
+            </div>
+            <div>
+                <label>Cinema:</label>
+                <input asp-for="CinemaId" type="text" />
+            </div>
+            <div>
+                <label>Description:</label>
+                <textarea asp-for="Description" style="width: 100%; height: 300px;"></textarea>
+                <span class="chars-current">0</span>
+            </div>
+            <div class="container-buttons">
+                <input class="button update" type="submit" value="Update" />
+                @if(User.IsInRole("Admin"))
+                {
+                    <a asp-action="Delete" asp-route-id="@Model.MovieId"><div class="button delete">Delete</div></a>
+                }
+                <a asp-action="Movies"><div class="button show">Show all</div></a>
+            </div>
+        </div>
     </div>
 </form>
+
+<style>
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    a:hover {
+        color: black;
+    }
+
+    .container {
+        display: flex;
+    }
+
+    .container-info {
+        width: 55vw;
+        margin-left: 20px;
+        display: grid;
+        row-gap: 10px;
+    }
+
+    .container-buttons {
+        display: flex;
+    }
+
+    .container-buttons a {
+        margin-left: 10px;
+    }
+
+    .button {
+        width: 80px;
+        height: 40px;
+        background: #999999;
+        border-radius: 5px;
+        text-align: center;
+        padding-top: 7px;
+        font-weight: 600;
+    }
+
+    .update {
+        border: 0px;
+        padding-bottom: 7px;
+    }
+
+    .update:hover {
+        color: white;
+        background: #198754;
+        transition: .3s;
+    }
+
+    .delete:hover {
+        color: white;
+        background: #dc3545;
+        transition: .3s;
+    }
+
+    .show:hover {
+        color: white;
+        background: #6f42c1;
+        transition: .3s;
+    }
+</style>

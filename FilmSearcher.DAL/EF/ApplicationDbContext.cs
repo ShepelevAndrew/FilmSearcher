@@ -6,6 +6,7 @@ namespace FilmSearcher.DAL.EF
 {
     public class ApplicationDbContext : DbContext
     {
+        public DbSet<User> Users { get; set; }
         public DbSet<Actor> Actors { get; set; }
         public DbSet<Producer> Producers { get; set; }
         public DbSet<Cinema> Cinemas { get; set; }
@@ -16,6 +17,7 @@ namespace FilmSearcher.DAL.EF
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.ApplyConfiguration(new UserTypeConfiguration());
             builder.ApplyConfiguration(new ActorTypeConfiguration());
             builder.ApplyConfiguration(new ProducerTypeConfiguration());
             builder.ApplyConfiguration(new CinemaTypeConfiguration());

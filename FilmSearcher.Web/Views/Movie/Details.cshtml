@@ -4,35 +4,111 @@
     ViewData["Title"] = "Movie";
 }
 
-<form asp-action="Details" method="post">
-    <div class="container">
+<div class="container">
+    <div>
+        <img style="width: 300px; margin-top: 20px" src="@Model.ImageURL" />
+    </div>
+    <div class="container-info">
         <div>
-            <img src="@Model.ImageURL"</img>
+            <span>@Model.Name</span>
         </div>
-        <div class="content">
-            <div>
-                <label>Movie id: </label>
-                <span>@Model.MovieId</span>
-            </div>
-            <div>
-                <span>@Model.Name</span>
-            </div>
-            <div>
-                <label>Description: </label>
-                <span>@Model.Description</span>
-            </div>
-            <a asp-action="Movies">Show all</a>
+        <div>
+            <label>Category:</label>
+            <span>@Model.Category</span>
+        </div>
+        <div>
+            <label>Start:</label>
+            <span>@Model.StartDate</span>
+        </div>
+        <div>
+            <label>End:</label>
+            <span>@Model.EndDate</span>
+        </div>
+        <div>
+            <label>Producer:</label>
+            <span>@Model.ProducerId</span>
+        </div>
+        <div>
+            <label>//Actors:</label>
+            <span>@Model.ProducerId</span>
+        </div>
+        <div>
+            <label>Cinema:</label>
+            <span>@Model.CinemaId</span>
+        </div>
+        <div>
+            <label>Description:</label>
+            <p>@Model.Description</p>
+        </div>
+        <div class="container-buttons">
+            <a asp-action="Movies"><div class="button show">Show all</div></a>
         </div>
     </div>
-</form>
+</div>
+<div class="container">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/uLtkt8BonwM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
 
 <style>
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    a:hover {
+        color: black;
+    }
+
     .container {
         display: flex;
         justify-content: center;
     }
-    img {
-        max-height: 500px;
-        max-width: 400px;
+
+    .container-info {
+        width: 55vw;
+        margin-left: 20px;
+        display: grid;
+        row-gap: 10px;
+    }
+
+    .container-buttons {
+        display: flex;
+    }
+
+    .container-buttons a {
+        margin-left: 10px;
+    }
+
+    .button {
+        width: 80px;
+        height: 40px;
+        background: #999999;
+        border-radius: 5px;
+        text-align: center;
+        padding-top: 7px;
+        font-weight: 600;
+    }
+
+    .update {
+        border: 0px;
+        padding-bottom: 7px;
+    }
+
+    .update:hover {
+        color: white;
+        background: #198754;
+        transition: .3s;
+    }
+
+    .delete:hover {
+        color: white;
+        background: #dc3545;
+        transition: .3s;
+    }
+
+    .show:hover {
+        color: white;
+        background: #6f42c1;
+        transition: .3s;
     }
 </style>
