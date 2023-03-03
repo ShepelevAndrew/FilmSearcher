@@ -1,10 +1,8 @@
-﻿using FilmSearcher.BLL.Services.Interfaces;
+﻿using FilmSearcher.BLL.Helpers;
+using FilmSearcher.BLL.Services.Interfaces;
 using FilmSearcher.DAL.Domain.Enum;
-using FilmSearcher.DAL.Domain.Helpers;
 using FilmSearcher.DAL.Entities;
 using FilmSearcher.DAL.Repositories.Interfaces;
-using Microsoft.AspNetCore.Diagnostics;
-using System.Net;
 using System.Security.Claims;
 
 namespace FilmSearcher.BLL.Services.Implementations

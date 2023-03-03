@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "tvUZxv6yFhg/F6eVDZgJD7q8eXZhJseLelivsrIZAf0=",
+  "Hash": "fD9ENDCRMwHGsPschjR8C3kNo8WU+hgK+5g/HWUfJLE=",
   "Source": "FilmSearcher.Web",
   "BasePath": "_content/FilmSearcher.Web",
   "Mode": "Default",
@@ -68,6 +68,23 @@
       "OriginalItemSpec": "wwwroot\\css\\movies-style.css"
     },
     {
+      "Identity": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\css\\sign-style.css",
+      "SourceId": "FilmSearcher.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\",
+      "BasePath": "_content/FilmSearcher.Web",
+      "RelativePath": "css/sign-style.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\sign-style.css"
+    },
+    {
       "Identity": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\css\\site.css",
       "SourceId": "FilmSearcher.Web",
       "SourceType": "Discovered",
@@ -83,6 +100,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\css\\users-style.css",
+      "SourceId": "FilmSearcher.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\",
+      "BasePath": "_content/FilmSearcher.Web",
+      "RelativePath": "css/users-style.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\users-style.css"
     },
     {
       "Identity": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\favicon.ico",
@@ -136,12 +170,12 @@
       "OriginalItemSpec": "wwwroot\\img\\icon\\bookmark-yellow.png"
     },
     {
-      "Identity": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\icon\\edit-hover.png",
+      "Identity": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\icon\\delete.png",
       "SourceId": "FilmSearcher.Web",
       "SourceType": "Discovered",
       "ContentRoot": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\",
       "BasePath": "_content/FilmSearcher.Web",
-      "RelativePath": "img/icon/edit-hover.png",
+      "RelativePath": "img/icon/delete.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -150,7 +184,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\img\\icon\\edit-hover.png"
+      "OriginalItemSpec": "wwwroot\\img\\icon\\delete.png"
     },
     {
       "Identity": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\icon\\edit.png",
@@ -204,6 +238,23 @@
       "OriginalItemSpec": "wwwroot\\img\\icon\\remove.png"
     },
     {
+      "Identity": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\icon\\search.png",
+      "SourceId": "FilmSearcher.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\",
+      "BasePath": "_content/FilmSearcher.Web",
+      "RelativePath": "img/icon/search.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\icon\\search.png"
+    },
+    {
       "Identity": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\icon\\star.png",
       "SourceId": "FilmSearcher.Web",
       "SourceType": "Discovered",
@@ -219,6 +270,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\icon\\star.png"
+    },
+    {
+      "Identity": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\picture\\002.jpg",
+      "SourceId": "FilmSearcher.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\",
+      "BasePath": "_content/FilmSearcher.Web",
+      "RelativePath": "img/picture/002.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\picture\\002.jpg"
+    },
+    {
+      "Identity": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\picture\\360_F_125579108_cKIL8gnBgRKqcLeyG03llZNaeFOjoCLH.jpg",
+      "SourceId": "FilmSearcher.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\",
+      "BasePath": "_content/FilmSearcher.Web",
+      "RelativePath": "img/picture/360_F_125579108_cKIL8gnBgRKqcLeyG03llZNaeFOjoCLH.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\picture\\360_F_125579108_cKIL8gnBgRKqcLeyG03llZNaeFOjoCLH.jpg"
     },
     {
       "Identity": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\js\\site.js",

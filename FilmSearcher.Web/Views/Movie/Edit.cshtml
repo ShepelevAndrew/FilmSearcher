@@ -1,5 +1,5 @@
 ﻿@using FilmSearcher.DAL.Domain.Enum;
-@model Movie
+@model MovieViewModel
 
 @{
     ViewData["Title"] = "Edit movie";
@@ -10,18 +10,22 @@
         <div>
             <div>
                 <label>ImageURL:</label>
-                <input asp-for="ImageURL" type="text" />
+                <input asp-for="Movie.ImageURL" type="text" />
             </div>
-            <img style="width: 300px; margin-top: 20px" src="@Model.ImageURL" />
+            <img style="width: 300px; margin-top: 20px" src="@Model.Movie.ImageURL" />
         </div>
         <div class="container-info">
             <div>
+                <label>Id:</label>
+                <input asp-for="Movie.MovieId" type="text" />
+            </div>
+            <div>
                 <label>Name:</label>
-                <input asp-for="Name" type="text" />
+                <input asp-for="Movie.Name" type="text" />
             </div>
             <div>
                 <label>Category:</label>
-                <select asp-for="Category">
+                <select asp-for="Movie.Category">
                     @foreach (var item in Enum.GetValues(typeof(MovieCategory)))
                     {
                         int num = (int)item;
@@ -33,34 +37,41 @@
             </div>
             <div>
                 <label>Start:</label>
-                <input asp-for="StartDate" type="date" />
+                <input asp-for="Movie.StartDate" type="date" />
             </div>
             <div>
                 <label>End:</label>
-                <input asp-for="EndDate" type="date" />
+                <input asp-for="Movie.EndDate" type="date" />
             </div>
             <div>
                 <label>Producer:</label>
-                <input asp-for="ProducerId" type="text" />
+                <input asp-for="Movie.ProducerId" type="text" />
             </div>
             <div>
-                <label>//Actors:</label>
-                <input asp-for="ProducerId" type="text" />
+                <label>Actors:</label>
+                <div class="searcher-block">
+                    <div class="list-actors">
+                    </div>
+                    <input type="text" name="search" id="search" placeholder="Актори..." autocomplete="off" />
+                    <div class="list-searcher list-searcher-actors none" id="search-block">
+
+                    </div>
+                </div>
             </div>
             <div>
                 <label>Cinema:</label>
-                <input asp-for="CinemaId" type="text" />
+                <input asp-for="Movie.CinemaId" type="text" />
             </div>
             <div>
                 <label>Description:</label>
-                <textarea asp-for="Description" style="width: 100%; height: 300px;"></textarea>
+                <textarea asp-for="Movie.Description" style="width: 100%; height: 300px;"></textarea>
                 <span class="chars-current">0</span>
             </div>
             <div class="container-buttons">
                 <input class="button update" type="submit" value="Update" />
                 @if(User.IsInRole("Admin"))
                 {
-                    <a asp-action="Delete" asp-route-id="@Model.MovieId"><div class="button delete">Delete</div></a>
+                    <a asp-action="Delete" asp-route-id="@Model.Movie.MovieId"><div class="button delete">Delete</div></a>
                 }
                 <a asp-action="Movies"><div class="button show">Show all</div></a>
             </div>
@@ -129,4 +140,171 @@
         background: #6f42c1;
         transition: .3s;
     }
+
+    .searcher-block {
+        position: relative;
+        width: 400px;
+        border: 1px solid #999;
+        padding: 4px;
+        border-radius: 4px;
+    }
+
+    .list-actors {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .searcher-block input {
+        border: none;
+        padding: 3px 5px;
+        margin: 5px;
+        width: 92.8%;
+    }
+
+    .searcher-block input:focus {
+        outline: none;
+    }
+
+    .list-searcher-actors {
+        border: 1px solid #999;
+        margin-top: 4px;
+        margin-left: -4.5px;
+        width: 398px;
+    }
+
+    .selected-item {
+        display: flex;
+        align-items: center;
+        background: #0088CC;
+        height: 20px;
+        font-size: 15px;
+        color: white;
+        border-radius: 3px;
+        padding: 3px 4px 3px 4px;
+        margin: 5px 0px 5px 5px;
+        transition: .1s;
+    }
+
+    .selected-item:hover {
+        transform: scale(1.05);
+        cursor: pointer;
+    }
+
+    .delete-btn {
+        display: inline-block;
+        margin: 0px 2px;
+    }
+
+    .delete-btn img {
+        width: 8px;
+    }
 </style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+        drawActors();
+        console.log(actorsData);
+
+        document.querySelector('#search').addEventListener('input', (e) => {
+            const searchString = e.target.value;
+            search(searchString, actorsData);
+        })
+    })
+
+    const drawActors = () => {
+        fetch('@Url.Action("Actors", "Movie")' + '?id=' + @Model.Movie.MovieId, {
+            method: "GET",
+        }).then((resp) => {
+            resp.json().then((data) => {
+                drawSelectedActors(data);
+            })
+        })
+    }
+
+    function search(searchString, actorsData) {
+        fetch('@Url.Action("Search", "Actor")' + '?search=' + searchString, {
+            method: "GET",
+        }).then((resp) => {
+            
+            resp.json().then((data) => {
+
+                const container = document.querySelector('.list-searcher');
+                let html = ``;
+                if (!data || !data.length) {
+                    data = [];
+                }
+                
+                for (const actor of data) {
+                    html += `
+                            <div class="search-item" data-id="${actor.actorId}">
+                                <img src="${actor.profilePictureURL}" />
+                                <span>${actor.fullName}</span>
+                            </div>        
+                            `
+                }
+                container.innerHTML = html;
+
+                document.querySelectorAll('.search-item').forEach((item) => {
+
+                    item.addEventListener('mouseover', (e) => {
+                        const searchText = item.innerText;
+
+                        document.querySelector('#search').value = searchText;
+                    })
+
+                    item.addEventListener('click', (e) => {
+
+                        for(const actor of data) {
+                            if (actor.actorId == item.dataset.id) {
+                                actorsData.push(actor);
+                            }
+                        }
+                        
+                        drawSelectedActors(actorsData);
+
+                        document.querySelector('#search').value = '';
+                        container.innerHTML = '';
+
+                        document.querySelectorAll('.selected-item').forEach((item) => {
+
+                            item.addEventListener('click', (e) => {
+
+                                const actorName = item.innerText;
+                                for (var i = 0; i < actorsData.length; i++) {
+                                    if (actorsData[i].fullName === actorName) {
+                                        actorsData.splice(i, 1);
+                                    }
+                                }
+                                console.log('actorsData', actorsData);
+
+                                drawSelectedActors(actorsData);
+                            })
+                        })
+                    })
+                })
+            })
+        })
+    }
+
+    function drawSelectedActors(actorsData) {
+        const containerActors = document.querySelector('.list-actors');
+
+        let html = ``;
+        for (const actor of actorsData) {
+
+            html += `
+                    <div class="selected-item" data-id="${actor.actorId}">
+                        <span>${actor.fullName}</span>
+                        <div class="delete-btn">
+                            <img src="../../../img/icon/delete.png" />
+                        </div>
+                    </div>
+                    `
+        }
+
+        containerActors.innerHTML = html;
+        console.log(containerActors);
+    }
+</script>

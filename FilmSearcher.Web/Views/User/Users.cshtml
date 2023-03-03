@@ -1,0 +1,32 @@
+﻿@using FilmSearcher.DAL.Domain.Enum;
+@model IEnumerable<UserDTO>
+
+@{
+    ViewData["Title"] = "Movies";
+}
+
+<div class="container-user-form">
+    <div class="container-users">
+        @foreach(var user in Model) {
+            <form asp-action="Update" method="post">
+                <div class="container-user">
+                    <input type="hidden" asp-for="@user.UserId" />
+                    <input type="hidden" asp-for="@user.Name" />
+                    <input type="hidden" asp-for="@user.Password" />
+                    <span>@user.Name</span>
+                    <select class="user-role @user.Role.ToString().ToLower()" asp-for="@user.Role">
+                        @foreach (var item in Enum.GetValues(typeof(Role)))
+                        {
+                            int num = (int)item;
+                            Role name = (Role)item;
+
+                            <option value="@num">@name</option>
+                        }
+                    </select>
+                    <button class="button update" type="submit" value="Update"><p>Update</p></button>
+                    <a asp-action="Delete" asp-route-id="@user.UserId"><div class="button delete"><p>Delete</p></div></a>
+                </div>
+            </form>
+        }
+    </div>
+</div>

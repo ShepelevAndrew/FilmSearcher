@@ -9,8 +9,16 @@
       "PackagePath": "staticwebassets\\css\\movies-style.css"
     },
     {
+      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\css\\sign-style.css",
+      "PackagePath": "staticwebassets\\css\\sign-style.css"
+    },
+    {
       "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\css\\users-style.css",
+      "PackagePath": "staticwebassets\\css\\users-style.css"
     },
     {
       "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\favicon.ico",
@@ -25,8 +33,8 @@
       "PackagePath": "staticwebassets\\img\\icon\\bookmark-yellow.png"
     },
     {
-      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\icon\\edit-hover.png",
-      "PackagePath": "staticwebassets\\img\\icon\\edit-hover.png"
+      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\icon\\delete.png",
+      "PackagePath": "staticwebassets\\img\\icon\\delete.png"
     },
     {
       "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\icon\\edit.png",
@@ -41,8 +49,20 @@
       "PackagePath": "staticwebassets\\img\\icon\\remove.png"
     },
     {
+      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\icon\\search.png",
+      "PackagePath": "staticwebassets\\img\\icon\\search.png"
+    },
+    {
       "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\icon\\star.png",
       "PackagePath": "staticwebassets\\img\\icon\\star.png"
+    },
+    {
+      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\picture\\002.jpg",
+      "PackagePath": "staticwebassets\\img\\picture\\002.jpg"
+    },
+    {
+      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\picture\\360_F_125579108_cKIL8gnBgRKqcLeyG03llZNaeFOjoCLH.jpg",
+      "PackagePath": "staticwebassets\\img\\picture\\360_F_125579108_cKIL8gnBgRKqcLeyG03llZNaeFOjoCLH.jpg"
     },
     {
       "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\js\\site.js",

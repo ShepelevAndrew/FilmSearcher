@@ -78,3 +78,5 @@ Q:\GitHub\FilmSearcherWebApp\FilmSearcher.Web\bin\Debug\net7.0\Microsoft.Extensi
 Q:\GitHub\FilmSearcherWebApp\FilmSearcher.Web\bin\Debug\net7.0\Mono.TextTemplating.dll
 Q:\GitHub\FilmSearcherWebApp\FilmSearcher.Web\bin\Debug\net7.0\System.CodeDom.dll
 Q:\GitHub\FilmSearcherWebApp\FilmSearcher.Web\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+Q:\GitHub\FilmSearcherWebApp\FilmSearcher.Web\bin\Debug\net7.0\AutoMapper.dll
+Q:\GitHub\FilmSearcherWebApp\FilmSearcher.Web\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

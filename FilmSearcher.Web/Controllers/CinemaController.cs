@@ -56,14 +56,14 @@ namespace FilmSearcher.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, [Bind("")] Cinema cinema)
+        public async Task<IActionResult> Edit([Bind("")] Cinema cinema)
         {
             /*if(!ModelState.IsValid)
             {
                 return View();
             }*/
 
-            await _cinemaService.UpdateAsync(id, cinema);
+            await _cinemaService.UpdateAsync(cinema);
             return RedirectToAction(nameof(Cinemas));
         }
 

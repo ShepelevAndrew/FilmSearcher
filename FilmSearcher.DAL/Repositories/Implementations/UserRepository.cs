@@ -32,15 +32,14 @@ namespace FilmSearcher.DAL.Repositories.Implementations
             return user;
         }
 
-        public async Task UpdateAsync(int id, User user)
+        public async Task UpdateAsync(User user)
         {
-            user.UserId = id;
             _dbContext.Users.Update(user);
             await _dbContext.SaveChangesAsync();
         }
         public async Task DeleteAsync(int id)
         {
-            var user = _dbContext.Users.FirstOrDefault(u => u.UserId == id);
+            var user = await _dbContext.Users.FirstOrDefaultAsync(u => u.UserId == id);
             _dbContext.Users.Remove(user);
             await _dbContext.SaveChangesAsync();
         }

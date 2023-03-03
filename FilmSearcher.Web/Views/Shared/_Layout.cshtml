@@ -6,13 +6,15 @@
     <title>@ViewData["Title"] - FilmSearcher.Web</title>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/movies-style.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/sign-style.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/users-style.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/FilmSearcher.Web.styles.css" asp-append-version="true" />
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">FilmSearcher.Web</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">FilmSearcher</a>
                 <div class="navbar-info-container">
                     <ul class="navbar-info">
                         <li>
@@ -23,6 +25,10 @@
                             @if(User.IsInRole("Admin"))
                             {
                                 <div class="user-role admin">Admin</div>
+                            }
+                            @if (User.IsInRole("Owner"))
+                            {
+                                <div class="user-role owner">Owner</div>
                             }
                         </li>
                         <li>
@@ -45,11 +51,11 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    @*<footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2023 - FilmSearcher.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
-    </footer>
+    </footer>*@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

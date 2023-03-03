@@ -4,8 +4,31 @@
     ViewData["Title"] = "Login";
 }
 
-<form action="Login" method="post">
-    <input asp-for="Name" />
-    <input asp-for="Password" />
-    <input type="submit" value="Login" />
-</form>
+<div class="form-container">
+    <div class="form">
+        <div class="form-logo">
+            <img src="~/img/picture/360_F_125579108_cKIL8gnBgRKqcLeyG03llZNaeFOjoCLH.jpg" alt="logo">
+        </div>
+        <div class="form-header">
+            <h1>Ради вас бачити!</h1>
+            <p>Увійдіть у свій аккаунт.</p>
+        </div>
+        <form asp-action="Login" method="post">
+            <div class="form-inputs-container">
+                <div class="form-inputs">
+                    <input asp-for="Name" type="text">
+                    <input asp-for="Password" type="password">
+                </div>
+            </div>
+            <div class="form-buttons">
+                <div class="form-checkbox">
+                    <input type="checkbox"><span>Запам'ятати мене</span>
+                </div>
+                <input class="form-button" type="submit" value="Увійти">
+            </div>
+        </form>
+        <div class="form-footer">
+            <p>Не маєш аккаунт?<a asp-action="Register">Зареєструйся</a></p>
+        </div>
+    </div>
+</div>

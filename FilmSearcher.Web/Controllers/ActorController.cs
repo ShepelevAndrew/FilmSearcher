@@ -9,7 +9,7 @@ namespace FilmSearcher.Web.Controllers
     {
         private readonly IBaseRepository<Actor> _actorService;
         private readonly ISearchService<Actor> _searchService;
-        
+
         public ActorController(IBaseRepository<Actor> actorService, ISearchService<Actor> search)
         {
             _actorService = actorService;
@@ -19,11 +19,21 @@ namespace FilmSearcher.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Actors(string searchString = "")
         {
-            var actors = searchString == "" 
-                ? await _actorService.GetAllAsync() 
+            var actors = searchString == ""
+                ? await _actorService.GetAllAsync()
                 : await _searchService.Search(searchString);
 
             return View(actors);
+        }
+
+        [HttpGet]
+        public async Task<JsonResult> Search(string search)
+        {
+            var movies = search == null
+                ? null
+                : await _searchService.Search(search);
+
+            return Json(movies);
         }
 
         public IActionResult Create()
@@ -32,12 +42,13 @@ namespace FilmSearcher.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("FullName,ProfilePictureURL,Bio")]Actor actor)
+        public async Task<IActionResult> Create([Bind("FullName,ProfilePictureURL,Bio")] Actor actor)
         {
             /*if(!ModelState.IsValid)
             {
                 return View();
-            }*/
+            }
+            */
 
             await _actorService.AddAsync(actor);
             return RedirectToAction(nameof(Actors));
@@ -62,14 +73,15 @@ namespace FilmSearcher.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FullName,ProfilePictureURL,Bio")] Actor actor)
+        public async Task<IActionResult> Edit([Bind("Id,FullName,ProfilePictureURL,Bio")] Actor actor)
         {
             /*if(!ModelState.IsValid)
             {
                 return View();
-            }*/
+            }
+            */
 
-            await _actorService.UpdateAsync(id, actor);
+            await _actorService.UpdateAsync(actor);
             return RedirectToAction(nameof(Actors));
         }
 

@@ -57,14 +57,14 @@ namespace FilmSearcher.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, [Bind("")] Producer producer)
+        public async Task<IActionResult> Edit([Bind("")] Producer producer)
         {
             /*if(!ModelState.IsValid)
             {
                 return View();
             }*/
 
-            await _producerService.UpdateAsync(id, producer);
+            await _producerService.UpdateAsync(producer);
             return RedirectToAction(nameof(Producers));
         }
 

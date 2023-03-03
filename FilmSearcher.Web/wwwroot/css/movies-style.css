@@ -4,6 +4,10 @@
     justify-content: space-between;
     align-items: center;
 }
+.navbar-brand {
+    font-size: 18px;
+    font-family: sans-serif;
+}
 .navbar-info-container {
     display: inline-block;
 }
@@ -20,14 +24,14 @@
 }
 .user-role {
     cursor: default;
-    height: 20px;
     width: 100px;
     border-radius: 5px;
     text-align: center;
-    padding: 5px 3px 0px 3px;
+    padding: 4px 0px 4px 0px;
     font-weight: bold;
     font-family: sans-serif;
     color: black;
+    display: inline-block;
 }
 .moderator {
     color: #3871C1;
@@ -37,15 +41,85 @@
     color: #F26065;
     border: #F26065 solid 1px;
 }
+.owner {
+    color: #32B76C;
+    border: #32B76C solid 1px;
+}
 
 
 /*Form*/
 .container-form {
-    width: 100vw;
     display: flex;
     justify-content: space-around;
+    align-items: center;
     margin: 10px 0px 10px 0px;
 }
+.container-form a:hover {
+    border-bottom: 1px solid black;
+}
+.container-form a:last-child:hover {
+    border: none;
+}
+.form-link-now {
+    border-bottom: 1px solid black;
+}
+.search-input {
+    width: 300px;
+    height: 35px;
+    border: 1px solid #999;
+    border-radius: 5px;
+    font-size: 17px;
+    font-family: sans-serif;
+    transition: .3s;
+    outline: none;
+    background-image: url("../img/icon/search.png");
+    background-repeat: no-repeat;
+    background-size: 27px;
+    background-position: 2px 2px;
+    padding: 0px;
+    padding-left: 35px;
+}
+.search-input:focus {
+    border: 1px solid #000;
+}
+.list-searcher {
+    position: absolute;
+    z-index: 999;
+    background: white;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 5px 5px 0px 5px;
+    max-height: 242px;
+    overflow-y: auto;
+}
+.search-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+.search-item:hover {
+    background: #F8F8F8;
+    cursor: pointer;
+}
+.search-item img {
+    width: 50px;
+}
+.search-item span {
+    margin-left: 5px;
+}
+.add {
+    display: inline-block;
+    color: #32B76C;
+    border: 1px solid #32B76C;
+    border-radius: 5px;
+    padding: 11px 18px 9px 17px;
+    transition: .3s;
+}
+.add:hover {
+    background: #50C878;
+    color: white;
+}
+
 
 
 
@@ -66,7 +140,7 @@ span {
     font-family: sans-serif;
 }
 
-.card-container {
+.cards-container {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;

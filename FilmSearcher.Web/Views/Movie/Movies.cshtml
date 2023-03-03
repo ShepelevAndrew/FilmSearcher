@@ -5,61 +5,68 @@
     ViewData["Title"] = "Movies";
 }
 
-
-<form asp-controller="Movie" asp-action="Movies" method="get">
+<div class="container-content">
     <div class="container-form">
+        <a asp-controller="Movie" asp-action="Movies" class="form-link-now"><p>Фільми</p></a>
+        <a asp-controller="Actor" asp-action="Actors"><p>Актори</p></a>
+        <a asp-controller="Producer" asp-action="Producers"><p>Продюсери</p></a>
+        <a asp-controller="Cinema" asp-action="Cinemas"><p>Кінотеатри</p></a>
         <div>
-            Search: <input type="text" name="search" />
-            <input type="submit" value="Filter" />
-        </div>
-        <div class="add"><a asp-controller="Movie" asp-action="Create">Add</a></div>
-    </div>
-</form>
+            <input class="search-input" type="text" name="search" id="search" placeholder="Пошук..." autocomplete="off"  />
+            <div class="list-searcher">
 
-<div class="card-container">
-@foreach (var movie in Model)
-{
-    <div class="card">
-        <a asp-action="Details" asp-route-id="@movie.MovieId">
-            <div class="card-filing">
-                <div class="card-header">
-                    <img src="@movie.ImageURL" alt="img-card" class="card-img">
-                    @if(!User.Identity.IsAuthenticated) {
-                        <a asp-controller="Account" asp-action="Register"><div class="card-bookmark"><img src="~/img/icon/bookmark-yellow.png" alt="bookmark"></div></a>
-                    }
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <div class="card-bookmark"><img src = "~/img/icon/bookmark-yellow.png" alt="bookmark"></div>
-                    }
-                    <div class="card-score"><img src="~/img/icon/star.png" alt="star" class="icon"><span>9.4</span></div>
-                    <div class="card-icon-details"></div>
-                </div>
-                <div class="card-info">
-                    <div class="card-info-header">
-                        <h1>@movie.Name</h1>
-                        @Html.Raw(GetStatus(movie.StartDate, movie.EndDate))
-                    </div>
-                    <ul>
-                        <li>@movie.EndDate.ToString("yyy")</li>
-                        <li>@movie.Category</li>
-                        <li>45min</li>
-                        <li>16+</li>
-                        <li>USA</li>
-                    </ul>
-                    <p>Director: @movie.ProducerId</p>
-                </div>
             </div>
-        </a>
-        @if (User.IsInRole("Admin"))
-        {
-            <a asp-controller="Movie" asp-action="Delete" asp-route-id="@movie.MovieId"><div class="card-info-icon"><img src="~/img/icon/remove.png" /></div></a>
-        }
-        @if (User.IsInRole("Moderator"))
-        {
-            <a asp-controller="Movie" asp-action="Edit" asp-route-id="@movie.MovieId"><div class="card-info-icon"><img src="~/img/icon/edit.png" /></div></a>
+        </div>
+        @if(User.IsInRole("Admin") || User.IsInRole("Owner")) {
+            <a asp-controller="Movie" asp-action="Create"><div class="add"><p>Add</p></div></a>
         }
     </div>
-}
+
+    <div class="cards-container">
+    @foreach (var movie in Model)
+    {
+        <div class="card">
+            <a asp-action="Details" asp-route-id="@movie.MovieId">
+                <div class="card-filing">
+                    <div class="card-header">
+                        <img src="@movie.ImageURL" alt="img-card" class="card-img">
+                        @if(!User.Identity.IsAuthenticated) {
+                            <a asp-controller="Account" asp-action="Register"><div class="card-bookmark"><img src="~/img/icon/bookmark-yellow.png" alt="bookmark"></div></a>
+                        }
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <div class="card-bookmark"><img src = "~/img/icon/bookmark-yellow.png" alt="bookmark"></div>
+                        }
+                        <div class="card-score"><img src="~/img/icon/star.png" alt="star" class="icon"><span>9.4</span></div>
+                        <div class="card-icon-details"></div>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-info-header">
+                            <h1>@movie.Name</h1>
+                            @Html.Raw(GetStatus(movie.StartDate, movie.EndDate))
+                        </div>
+                        <ul>
+                            <li>@movie.EndDate.ToString("yyy")</li>
+                            <li>@movie.Category</li>
+                            <li>45min</li>
+                            <li>16+</li>
+                            <li>USA</li>
+                        </ul>
+                        <p>Director: @movie.ProducerId</p>
+                    </div>
+                </div>
+            </a>
+            @if (User.IsInRole("Admin"))
+            {
+                <a asp-controller="Movie" asp-action="Delete" asp-route-id="@movie.MovieId"><div class="card-info-icon"><img src="~/img/icon/remove.png" /></div></a>
+            }
+            @if (User.IsInRole("Moderator"))
+            {
+                <a asp-controller="Movie" asp-action="Edit" asp-route-id="@movie.MovieId"><div class="card-info-icon"><img src="~/img/icon/edit.png" /></div></a>
+            }
+        </div>
+    }
+    </div>
 </div>
 
 @{
@@ -78,23 +85,51 @@
     };
 }
 
-<style>
-    .button {
-        width: 25px;
-        height: 25px;
-        position: absolute;
-        top: 23px;
-        right: 23px;
-        background: white;
-        text-align: center;
-        display: inline-block;
-        cursor: pointer;
-    }
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
 
-    .add {
-        display: inline-block;
-        background-color: #999999;
-        width: 70px;
-        height: 35px;
+        document.querySelector('#search').addEventListener('input', (e) => {
+            const searchString = e.target.value;
+
+            search(searchString);
+        })
+    })
+
+    function search(searchString) {
+        fetch('@Url.Action("Search", "Movie")' + '?search=' + searchString, {
+            method: "GET",
+        }).then((resp) => {
+
+            resp.json().then((data) => {
+
+                const container = document.querySelector('.list-searcher');
+                let html = ``;
+                if (!data || !data.length) {
+                    data = [];
+                }
+
+                for (const movie of data) {
+                    html += `
+                            <div class="search-item" data-id="${movie.movieId}">
+                                <img src="${movie.imageURL}" />
+                                <span>${movie.name}</span>
+                            </div>
+                           `;
+                }
+                container.innerHTML = html;
+
+                document.querySelectorAll('.search-item').forEach((item) => {
+
+                    item.addEventListener('mouseover', (e) => {
+                        const searchText = item.innerText;
+                        document.querySelector('#search').value = searchText;
+                    })
+
+                    item.addEventListener('click', (e) => {
+                        window.location.href = '@Url.Action("Details", "Movie")' + '/' + e.currentTarget.dataset.id;
+                    })
+                })
+            })
+        })
     }
-</style>
+</script>

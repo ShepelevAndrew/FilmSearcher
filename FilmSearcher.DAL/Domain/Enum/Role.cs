@@ -4,6 +4,7 @@
     {
         User,
         Moderator,
-        Admin
+        Admin,
+        Owner
     }
 }

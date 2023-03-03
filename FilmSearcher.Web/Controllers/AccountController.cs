@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using FilmSearcher.DAL.Entities;
+using System.ComponentModel.DataAnnotations;
 
 namespace FilmSearcher.Web.Controllers
 {
@@ -29,7 +30,7 @@ namespace FilmSearcher.Web.Controllers
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                     new ClaimsPrincipal(response));
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Movies", "Movie");
             }
             return View(model);
         }
@@ -47,7 +48,7 @@ namespace FilmSearcher.Web.Controllers
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                     new ClaimsPrincipal(response));
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Movies", "Movie");
             }
             return View(model);
         }
@@ -56,7 +57,7 @@ namespace FilmSearcher.Web.Controllers
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Movies", "Movie");
         }
     }
 }

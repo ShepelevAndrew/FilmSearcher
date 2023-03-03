@@ -4,81 +4,67 @@
     ViewData["Title"] = "Cinemas";
 }
 
-@foreach (var cinema in Model)
-{
-    <div class="card">
-        <a class="card-link" asp-action="Details" asp-route-id="@cinema.CinemaId">
-            <div class="container">
-                <img src="@cinema.Logo" style="width: 170px; height: 230px;">
-                <div class="card-content">
-                    <p>@cinema.Name</p>
-                </div>
+<div class="container-content">
+    <form asp-controller="Movie" asp-action="Movies" method="get">
+        <div class="container-form">
+            <a asp-controller="Movie" asp-action="Movies"><p>Фільми</p></a>
+            <a asp-controller="Actor" asp-action="Actors"><p>Актори</p></a>
+            <a asp-controller="Producer" asp-action="Producers"><p>Продюсери</p></a>
+            <a asp-controller="Cinema" asp-action="Cinemas" class="form-link-now"><p>Кінотеатри</p></a>
+            <div>
+                <input class="search-input" type="text" name="search" placeholder="Пошук..." />
+                <input class="search-button" type="submit" value="Уперед" />
             </div>
-            <p class="card-description">@cinema.Description</p>
-        </a>
-        <a asp-action="Edit" asp-route-id="@cinema.CinemaId"><div class="button">e</div></a>
+            @if (User.IsInRole("Admin"))
+            {
+                <a asp-controller="Movie" asp-action="Create"><div class="add"><p>Add</p></div></a>
+            }
+        </div>
+    </form>
+
+    <div class="cards-container">
+        @foreach (var cinema in Model)
+        {
+            <div class="card">
+                <a asp-action="Details" asp-route-id="@cinema.CinemaId">
+                    <div class="card-filing">
+                        <div class="card-header">
+                            <img src="@cinema.Logo" alt="img-card" class="card-img">
+                            @if (!User.Identity.IsAuthenticated)
+                            {
+                                <a asp-controller="Account" asp-action="Register"><div class="card-bookmark"><img src="~/img/icon/bookmark-yellow.png" alt="bookmark"></div></a>
+                            }
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <div class="card-bookmark"><img src="~/img/icon/bookmark-yellow.png" alt="bookmark"></div>
+                            }
+                            <div class="card-score"><img src="~/img/icon/star.png" alt="star" class="icon"><span>9.4</span></div>
+                            <div class="card-icon-details"></div>
+                        </div>
+                        <div class="card-info">
+                            <div class="card-info-header">
+                                <h1>@cinema.Name</h1>
+                            </div>
+                            <ul>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                            <p></p>
+                        </div>
+                    </div>
+                </a>
+                @if (User.IsInRole("Admin"))
+                {
+                    <a asp-controller="Movie" asp-action="Delete" asp-route-id="@cinema.CinemaId"><div class="card-info-icon"><img src="~/img/icon/remove.png" /></div></a>
+                }
+                @if (User.IsInRole("Moderator"))
+                {
+                    <a asp-controller="Movie" asp-action="Edit" asp-route-id="@cinema.CinemaId"><div class="card-info-icon"><img src="~/img/icon/edit.png" /></div></a>
+                }
+            </div>
+        }
     </div>
-}
-<div class="add"><a asp-action="Create">Add</a></div>
-
-<style>
-    p {
-        margin: 0px;
-    }
-
-    a {
-        color: black;
-        text-decoration: none;
-    }
-
-    a:hover {
-        color: black;
-    }
-
-    .card {
-        width: 300px;
-        height: 100%;
-        border: 1px solid #999999;
-        border-radius: 5px;
-        display: inline-block;
-    }
-
-    .card-link {
-        display: block;
-        padding: 10px;
-    }
-
-    .container {
-        padding: 0px;
-        display: flex;
-    }
-
-    .card-content {
-        margin-left: 5px;
-    }
-
-    .card-description {
-        height: 140px;
-        overflow: hidden;
-    }
-
-    .button {
-        width: 20px;
-        height: 20px;
-        position: absolute;
-        top: 5px;
-        right: 5px;
-        background-color: #999999;
-        text-align: center;
-        display: inline-block;
-        cursor: pointer;
-    }
-
-    .add {
-        display: inline-block;
-        background-color: #999999;
-        width: 70px;
-        height: 50px;
-        position: fixed;
-    }
-</style>
+</div>

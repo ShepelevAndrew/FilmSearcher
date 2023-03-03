@@ -24,9 +24,9 @@ namespace FilmSearcher.BLL.Services.Implementations
             var moviesRepos = await _movieRepository.GetAllAsync();
             var movies = moviesRepos.ToList();
 
-            var searchMovies = movies.FindAll(x => x.Name.Contains(search));
+            var searchMovies = movies.FindAll(x => x.Name.ToLower().Contains(search.ToLower()));
 
-            searchMovies.AddRange(movies.FindAll(x => x.Description.Contains(search)));
+            /*searchMovies.AddRange(movies.FindAll(x => x.Description.Contains(search)));
 
             if (DateTime.TryParse(search, out DateTime date))
             {
@@ -35,7 +35,7 @@ namespace FilmSearcher.BLL.Services.Implementations
             else if (Enum.TryParse(typeof(MovieCategory), search, out object? category))
             {
                 searchMovies.AddRange(movies.FindAll(x => x.Category == (MovieCategory)(int)category));
-            }
+            }*/
 
             return searchMovies;
         }

@@ -16,7 +16,7 @@ namespace FilmSearcher.BLL.Services.Implementations
 
         public async Task<IEnumerable<Actor>> Search(string searchString)
         {
-            var searchItems = _dbContext.Actors.ToList().FindAll(x => x.FullName.Contains(searchString));
+            var searchItems = _dbContext.Actors.ToList().FindAll(x => x.FullName.ToLower().Contains(searchString.ToLower()));
 
             return searchItems;
         }

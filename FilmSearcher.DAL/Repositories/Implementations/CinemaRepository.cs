@@ -31,9 +31,8 @@ namespace FilmSearcher.BLL.Services.Implementations
             var cinema = await _dbContext.Cinemas.FirstOrDefaultAsync(c => c.CinemaId == id);
             return cinema;
         }
-        public async Task UpdateAsync(int id, Cinema cinema)
+        public async Task UpdateAsync(Cinema cinema)
         {
-            cinema.CinemaId = id;
             _dbContext.Update(cinema);
             await _dbContext.SaveChangesAsync();
         }

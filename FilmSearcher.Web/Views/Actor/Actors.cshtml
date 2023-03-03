@@ -4,53 +4,67 @@
     ViewData["Title"] = "Actors";
 }
 
-<form asp-controller="Actor" asp-action="Actors" method="get">
-    <p>
-        Title: <input type="text" name="searchString" />
-        <input type="submit" value="Filter" />
-    </p>
-</form>
-@foreach(var actor in Model) {
-        <div class="card" style="width: 230px; height: 100%; padding: 10px; border: 1px solid #999999; border-radius: 5px; display: inline-block;">
-            <a asp-action="Details" asp-route-id="@actor.ActorId">
-                <div class="card-content">
-                    <img src="@actor.ProfilePictureURL" style="width: 170px; height: 230px;">
-                    <p>@actor.FullName</p>
-                    <p>@actor.Bio</p>
-                </div>
-            </a>
-            <a asp-action="Edit" asp-route-id="@actor.ActorId"><div class="button">e</div></a>
+<div class="container-content">
+    <form asp-controller="Movie" asp-action="Movies" method="get">
+        <div class="container-form">
+            <a asp-controller="Movie" asp-action="Movies"><p>Фільми</p></a>
+            <a asp-controller="Actor" asp-action="Actors" class="form-link-now"><p>Актори</p></a>
+            <a asp-controller="Producer" asp-action="Producers"><p>Продюсери</p></a>
+            <a asp-controller="Cinema" asp-action="Cinemas"><p>Кінотеатри</p></a>
+            <div>
+                <input class="search-input" type="text" name="search" placeholder="Пошук..." />
+                <input class="search-button" type="submit" value="Уперед" />
+            </div>
+            @if (User.IsInRole("Admin"))
+            {
+                <a asp-controller="Movie" asp-action="Create"><div class="add"><p>Add</p></div></a>
+            }
         </div>
-}
-<div class="add"><a asp-controller="Actor" asp-action="Create">Add</a></div>
+    </form>
 
-<style>
-    a {
-        color: black;
-        text-decoration:none;
-    }
-    .button {
-        width: 20px;
-        height: 20px;
-        position: absolute;
-        top: 5px;
-        right: 5px;
-        background-color: #999999;
-        text-align: center;
-        display: inline-block;
-        cursor: pointer;
-    }
-    .add {
-        background-color: #999999;
-        width: 70px;
-        height: 50px;
-        position: fixed;
-    }
-</style>
-
-<script type="text/jscript">
-    function Search(id) {
-        let path = "/Actor/Search";
-        $.get(path);
-    };
-</script>
+    <div class="cards-container">
+        @foreach (var actor in Model)
+        {
+            <div class="card">
+                <a asp-action="Details" asp-route-id="@actor.ActorId">
+                    <div class="card-filing">
+                        <div class="card-header">
+                            <img src="@actor.ProfilePictureURL" alt="img-card" class="card-img">
+                            @if (!User.Identity.IsAuthenticated)
+                            {
+                                <a asp-controller="Account" asp-action="Register"><div class="card-bookmark"><img src="~/img/icon/bookmark-yellow.png" alt="bookmark"></div></a>
+                            }
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <div class="card-bookmark"><img src="~/img/icon/bookmark-yellow.png" alt="bookmark"></div>
+                            }
+                            <div class="card-score"><img src="~/img/icon/star.png" alt="star" class="icon"><span>9.4</span></div>
+                            <div class="card-icon-details"></div>
+                        </div>
+                        <div class="card-info">
+                            <div class="card-info-header">
+                                <h1>@actor.FullName</h1>
+                            </div>
+                            <ul>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                            <p></p>
+                        </div>
+                    </div>
+                </a>
+                @if (User.IsInRole("Admin"))
+                {
+                    <a asp-controller="Movie" asp-action="Delete" asp-route-id="@actor.ActorId"><div class="card-info-icon"><img src="~/img/icon/remove.png" /></div></a>
+                }
+                @if (User.IsInRole("Moderator"))
+                {
+                    <a asp-controller="Movie" asp-action="Edit" asp-route-id="@actor.ActorId"><div class="card-info-icon"><img src="~/img/icon/edit.png" /></div></a>
+                }
+            </div>
+        }
+    </div>
+</div>

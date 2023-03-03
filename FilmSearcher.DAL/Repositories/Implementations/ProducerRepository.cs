@@ -32,10 +32,9 @@ namespace FilmSearcher.BLL.Services.Implementations
             return producer;
         }
 
-        public async Task UpdateAsync(int id, Producer producer)
+        public async Task UpdateAsync(Producer producer)
         {
-            producer.ProducerId = id;
-            await _dbContext.Producers.AddAsync(producer);
+            _dbContext.Producers.Update(producer);
             await _dbContext.SaveChangesAsync();
         }
         public async Task DeleteAsync(int id)

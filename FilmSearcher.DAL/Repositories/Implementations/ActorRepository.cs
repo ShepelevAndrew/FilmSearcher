@@ -39,9 +39,8 @@ namespace FilmSearcher.DAL.Repositories.Implementations
             return actor;
         }
 
-        public async Task UpdateAsync(int id, Actor actor)
+        public async Task UpdateAsync(Actor actor)
         {
-            actor.ActorId = id;
             _dbContext.Update(actor);
             await _dbContext.SaveChangesAsync();
         }

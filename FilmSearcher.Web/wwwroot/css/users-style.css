@@ -1,0 +1,47 @@
+.container-user-form {
+    display: flex;
+    justify-content: center;
+}
+.container-user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0px 10px 0px;
+    grid-column-gap: 10px;
+}
+
+select {
+    margin-left: 5px;
+    cursor: pointer !important;
+}
+
+option {
+    color: black;
+}
+
+.button {
+    width: 100px;
+    text-align: center;
+    padding: 5px 0px 5px 0px;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .3s;
+    background: white;
+}
+.delete {
+    color: #F26065;
+    border: 1px solid #F26065;
+}
+.delete:hover {
+    color: white;
+    background: #F26065;
+}
+.update {
+    color: #3871C1;
+    border: 1px solid #3871C1;
+}
+.update:hover {
+    color: white;
+    background: #3871C1;
+}

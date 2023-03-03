@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "ygkahw03JGPBaWqbNSu0N3HRf3nQLCVHujmkXV0/vaZd09kzvQeraF5WYQ60OBsn3kmo11BnHfHX7IRm2hC7wQ==",
+  "dgSpecHash": "DX2R3uuqlEvGtoUkUMn181wrC64VTISy5j+xeaRXeHr0Y6dx+j8GytSCp7/XIPJ9xO8kNRqhdBw/ecirh+HlvQ==",
   "success": true,
   "projectFilePath": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.DAL\\FilmSearcher.DAL.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\computer\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
+    "C:\\Users\\computer\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
     "C:\\Users\\computer\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\7.0.2\\microsoft.aspnetcore.authentication.jwtbearer.7.0.2.nupkg.sha512",
-    "C:\\Users\\computer\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\computer\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\computer\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.2\\microsoft.entityframeworkcore.7.0.2.nupkg.sha512",
     "C:\\Users\\computer\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.2\\microsoft.entityframeworkcore.abstractions.7.0.2.nupkg.sha512",
     "C:\\Users\\computer\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.2\\microsoft.entityframeworkcore.analyzers.7.0.2.nupkg.sha512",

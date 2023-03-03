@@ -1,3 +1,4 @@
+using FilmSearcher.BLL.Helpers;
 using FilmSearcher.BLL.Services.Implementations;
 using FilmSearcher.BLL.Services.Interfaces;
 using FilmSearcher.DAL.EF;
@@ -25,11 +26,16 @@ builder.Services.AddScoped<IBaseRepository<User>, UserRepository>()
                 .AddScoped<IBaseRepository<Actor>, ActorRepository>()
                 .AddScoped<IBaseRepository<Cinema>, CinemaRepository>()
                 .AddScoped<IBaseRepository<Movie>, MovieRepository>()
-                .AddScoped<IBaseRepository<Producer>, ProducerRepository>();
+                .AddScoped<IBaseRepository<Producer>, ProducerRepository>()
+                .AddScoped<IActorMovieRepository, ActorMovieRepository>();
 
 builder.Services.AddScoped<ISearchService<Actor>, SearchActorService>()
                 .AddScoped<ISearchService<Movie>, SearchMovieService>()
-                .AddScoped<IAccountService, AccountService>();
+                .AddScoped<IAccountService, AccountService>()
+                .AddScoped<IMovieService, MovieService>()
+                .AddScoped<IUserService, UserService>();
+
+builder.Services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
 
 builder.Services.AddControllersWithViews();
 

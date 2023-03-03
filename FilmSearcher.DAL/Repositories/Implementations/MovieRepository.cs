@@ -32,9 +32,8 @@ namespace FilmSearcher.BLL.Services.Implementations
             return movie;
         }
 
-        public async Task UpdateAsync(int id, Movie movie)
+        public async Task UpdateAsync(Movie movie)
         {
-            movie.MovieId = id;
             _dbContext.Movies.Update(movie);
             await _dbContext.SaveChangesAsync();
         }

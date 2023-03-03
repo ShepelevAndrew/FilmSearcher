@@ -1,4 +1,4 @@
-﻿@model Movie
+﻿@model MovieViewModel
 
 @{
     ViewData["Title"] = "Movie";
@@ -6,39 +6,41 @@
 
 <div class="container">
     <div>
-        <img style="width: 300px; margin-top: 20px" src="@Model.ImageURL" />
+        <img style="width: 300px; margin-top: 20px" src="@Model.Movie.ImageURL" />
     </div>
     <div class="container-info">
         <div>
-            <span>@Model.Name</span>
+            <span>@Model.Movie.Name</span>
         </div>
         <div>
             <label>Category:</label>
-            <span>@Model.Category</span>
+            <span>@Model.Movie.Category</span>
         </div>
         <div>
             <label>Start:</label>
-            <span>@Model.StartDate</span>
+            <span>@Model.Movie.StartDate</span>
         </div>
         <div>
             <label>End:</label>
-            <span>@Model.EndDate</span>
+            <span>@Model.Movie.EndDate</span>
         </div>
         <div>
             <label>Producer:</label>
-            <span>@Model.ProducerId</span>
+            <span>@Model.Movie.ProducerId</span>
         </div>
         <div>
-            <label>//Actors:</label>
-            <span>@Model.ProducerId</span>
+            <label>Actors:</label>
+            @foreach (var actor in @Model.Actors) {
+                <span><a asp-controller="Actor" asp-action="Details" asp-route-id="@actor.ActorId">@actor.FullName</a></span>
+            }
         </div>
         <div>
             <label>Cinema:</label>
-            <span>@Model.CinemaId</span>
+            <span>@Model.Movie.CinemaId</span>
         </div>
         <div>
             <label>Description:</label>
-            <p>@Model.Description</p>
+            <p>@Model.Movie.Description</p>
         </div>
         <div class="container-buttons">
             <a asp-action="Movies"><div class="button show">Show all</div></a>

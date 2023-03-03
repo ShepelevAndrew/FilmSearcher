@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 
-namespace FilmSearcher.DAL.Domain.Helpers
+namespace FilmSearcher.BLL.Helpers
 {
     public class HashPasswordHelper
     {

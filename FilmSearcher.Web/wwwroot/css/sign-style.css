@@ -1,0 +1,112 @@
+body {
+    margin: 0px;
+}
+p {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.form-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("../img/picture/002.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.form {
+    min-width: 100px;
+    width: 400px;
+    background: white;
+}
+.form-logo {
+    display: flex;
+    justify-content: center;
+}
+.form-logo img {
+    width: 230px;
+}
+.form-header {
+    text-align: center;
+}
+.form-header h1 {
+    margin: 0;
+    font-family: sans-serif;
+    font-weight: 700;
+    font-size: 25px;
+}
+form {
+    padding: 0 50px;
+    margin-top: 20px;
+}
+.form-inputs-container {
+    display: flex;
+    justify-content: center;
+}
+.form-inputs {
+    width: 100%;
+}
+.form-inputs input {
+    display: block;
+    padding: 0;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 30px;
+    border: 1px solid #999;
+    border-radius: 5px;
+    font-family: sans-serif;
+    font-size: 16px;
+}
+.form-inputs input:active {
+    border: 1px solid black;
+}
+.form-inputs input:focus {
+    border: 1px solid black;
+}
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.form-checkbox {
+    display: flex;
+    align-items: center;
+}
+.form-checkbox input {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+}
+.form-checkbox span {
+    margin-left: 5px;
+    font-family: sans-serif;
+    font-size: 13px;
+    cursor: default;
+}
+.form-checkbox input {
+    cursor: pointer;
+}
+.form-button {
+    width: 100px;
+    height: 40px;
+    background: white;
+    border: 1px solid black;
+    transition: .3s;
+}
+.form-button:hover {
+    background: black;
+    color: white;
+    cursor: pointer;
+}
+.form-footer {
+    margin: 20px 0;
+    text-align: center;
+    font-size: 13px;
+}
+.form-footer a {
+    margin-left: 3px;
+    cursor: pointer;
+    border-bottom: 1px solid black;
+}
