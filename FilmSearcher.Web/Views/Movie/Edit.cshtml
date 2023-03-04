@@ -50,12 +50,9 @@
             <div>
                 <label>Actors:</label>
                 <div class="searcher-block">
-                    <div class="list-actors">
-                    </div>
+                    <div class="list-actors"></div>
                     <input type="text" name="search" id="search" placeholder="Актори..." autocomplete="off" />
-                    <div class="list-searcher list-searcher-actors none" id="search-block">
-
-                    </div>
+                    <div class="list-searcher list-searcher-actors" id="search-block"></div>
                 </div>
             </div>
             <div>
@@ -200,111 +197,4 @@
         width: 8px;
     }
 </style>
-
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-
-        drawActors();
-        console.log(actorsData);
-
-        document.querySelector('#search').addEventListener('input', (e) => {
-            const searchString = e.target.value;
-            search(searchString, actorsData);
-        })
-    })
-
-    const drawActors = () => {
-        fetch('@Url.Action("Actors", "Movie")' + '?id=' + @Model.Movie.MovieId, {
-            method: "GET",
-        }).then((resp) => {
-            resp.json().then((data) => {
-                drawSelectedActors(data);
-            })
-        })
-    }
-
-    function search(searchString, actorsData) {
-        fetch('@Url.Action("Search", "Actor")' + '?search=' + searchString, {
-            method: "GET",
-        }).then((resp) => {
-            
-            resp.json().then((data) => {
-
-                const container = document.querySelector('.list-searcher');
-                let html = ``;
-                if (!data || !data.length) {
-                    data = [];
-                }
-                
-                for (const actor of data) {
-                    html += `
-                            <div class="search-item" data-id="${actor.actorId}">
-                                <img src="${actor.profilePictureURL}" />
-                                <span>${actor.fullName}</span>
-                            </div>        
-                            `
-                }
-                container.innerHTML = html;
-
-                document.querySelectorAll('.search-item').forEach((item) => {
-
-                    item.addEventListener('mouseover', (e) => {
-                        const searchText = item.innerText;
-
-                        document.querySelector('#search').value = searchText;
-                    })
-
-                    item.addEventListener('click', (e) => {
-
-                        for(const actor of data) {
-                            if (actor.actorId == item.dataset.id) {
-                                actorsData.push(actor);
-                            }
-                        }
-                        
-                        drawSelectedActors(actorsData);
-
-                        document.querySelector('#search').value = '';
-                        container.innerHTML = '';
-
-                        document.querySelectorAll('.selected-item').forEach((item) => {
-
-                            item.addEventListener('click', (e) => {
-
-                                const actorName = item.innerText;
-                                for (var i = 0; i < actorsData.length; i++) {
-                                    if (actorsData[i].fullName === actorName) {
-                                        actorsData.splice(i, 1);
-                                    }
-                                }
-                                console.log('actorsData', actorsData);
-
-                                drawSelectedActors(actorsData);
-                            })
-                        })
-                    })
-                })
-            })
-        })
-    }
-
-    function drawSelectedActors(actorsData) {
-        const containerActors = document.querySelector('.list-actors');
-
-        let html = ``;
-        for (const actor of actorsData) {
-
-            html += `
-                    <div class="selected-item" data-id="${actor.actorId}">
-                        <span>${actor.fullName}</span>
-                        <div class="delete-btn">
-                            <img src="../../../img/icon/delete.png" />
-                        </div>
-                    </div>
-                    `
-        }
-
-        containerActors.innerHTML = html;
-        console.log(containerActors);
-    }
-</script>
+<script src="~/js/movie-edit.js"></script>
