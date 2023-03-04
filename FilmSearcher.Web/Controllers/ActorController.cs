@@ -27,13 +27,15 @@ namespace FilmSearcher.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<JsonResult> Search(string search)
+        public async Task<JsonResult> Search(string? search)
         {
-            var movies = search == null
-                ? null
-                : await _searchService.Search(search);
+            if (search is null) {
+                return Json(null);
+            }
+            
+            var actors = await _searchService.Search(search);
 
-            return Json(movies);
+            return Json(actors);
         }
 
         public IActionResult Create()
