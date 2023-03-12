@@ -33,7 +33,23 @@
                         </li>
                         <li>
                             @if(User.Identity.IsAuthenticated) {
-                                <p>Привіт, @User.Identity.Name!</p>
+                                <div class="container-user-btn">
+                                    <p>Привіт, @User.Identity.Name!</p>
+                                </div>
+                                <div class="container-user-info">
+                                    <div class="user-info-header">
+                                        <div class="user-info-back-pic" style="background: url('../img/picture/60bf7c84a3f4bb95b2a4d0697bbedbae.jpg'); background-size: cover; background-position-y: center;"></div>
+                                        <img class="user-profile-photo" src="~/img/picture/002.jpg" alt="user-photo" />
+                                    </div>
+                                    <div class="user-info-main">
+                                         <p>@User.Identity.Name</p>
+                                        <p>govno@gmail.com</p>
+                                    </div>
+                                    <ul>
+                                        <a asp-controller="User" asp-action="Profile" asp-route-id="@User.FindFirstValue(ClaimTypes.NameIdentifier)"><li><img src="~/img/icon/f.png" /><p>Переглянути профіль</p></li></a>
+                                        <a asp-controller="Account" asp-action="Logout"><li><img src="~/img/icon/logout.png" /><p>Вийти з аккаунту</p></li></a>
+                                    </ul>
+                                </div>
                             }
                             @if(!User.Identity.IsAuthenticated)
                             {

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using FilmSearcher.DAL.Entities;
 using System.ComponentModel.DataAnnotations;
+using FilmSearcher.BLL.Models;
 
 namespace FilmSearcher.Web.Controllers
 {
@@ -21,7 +22,7 @@ namespace FilmSearcher.Web.Controllers
         public IActionResult Register() => View();
 
         [HttpPost]
-        public async Task<IActionResult> Register(User model)
+        public async Task<IActionResult> Register(UserDTO model)
         {
             if (ModelState.IsValid)
             {
@@ -39,7 +40,7 @@ namespace FilmSearcher.Web.Controllers
         public IActionResult Login() => View();
 
         [HttpPost]
-        public async Task<IActionResult> Login(User model)
+        public async Task<IActionResult> Login(UserDTO model)
         {
             if (ModelState.IsValid)
             {
@@ -53,7 +54,7 @@ namespace FilmSearcher.Web.Controllers
             return View(model);
         }
 
-        [ValidateAntiForgeryToken]
+        /*[ValidateAntiForgeryToken]*/
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);

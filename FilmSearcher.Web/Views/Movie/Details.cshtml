@@ -30,9 +30,17 @@
         </div>
         <div>
             <label>Actors:</label>
-            @foreach (var actor in @Model.Actors) {
-                <span><a asp-controller="Actor" asp-action="Details" asp-route-id="@actor.ActorId">@actor.FullName</a></span>
-            }
+            <ul class="actors-block">
+                @foreach (var actor in @Model.ActorsData) {
+                    <li>
+                        <div class="actors-add-info">
+                            <img src="@actor.ProfilePictureURL" height="70px">
+                            <span>@actor.FullName</span>
+                        </div>
+                        <a asp-controller="Actor" asp-action="Details" asp-route-id="@actor.ActorId">@actor.FullName</a>
+                    </li>
+                }
+            </ul>
         </div>
         <div>
             <label>Cinema:</label>
@@ -42,13 +50,15 @@
             <label>Description:</label>
             <p>@Model.Movie.Description</p>
         </div>
-        <div class="container-buttons">
-            <a asp-action="Movies"><div class="button show">Show all</div></a>
-        </div>
     </div>
 </div>
 <div class="container">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/uLtkt8BonwM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <div class="score-container">
+
+    </div>
+    <div class="score-of-film">
+        <span>5</span>
+    </div>
 </div>
 
 <style>
@@ -64,6 +74,23 @@
     .container {
         display: flex;
         justify-content: center;
+    }
+
+    .score-container {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .score-img-container:first-child {
+        padding-left: 0;
+    }
+    .score-img-container {
+        padding-left: 20px;
+    }
+
+    .container img:hover {
+        cursor: pointer;
     }
 
     .container-info {
@@ -108,9 +135,71 @@
         transition: .3s;
     }
 
-    .show:hover {
-        color: white;
-        background: #6f42c1;
-        transition: .3s;
+    .actors-block {
+        display: flex;
+        margin: 5px 0px;
+        padding-left: 20px;
+        grid-column-gap: 10px;
+        position: relative;
+    }
+
+    .actors-block li {
+        list-style-type: none
+    }
+
+    .actors-block li::after {
+        content: ',';
+    }
+
+    .actors-block li:last-child::after {
+        content: '.';
+    }
+
+    .actors-add-info {
+        top: -70px;
+        position: absolute;
+        transition: .2s;
+        visibility: hidden;
+        opacity: 0;
+        display: flex;
+        align-items: center;
+        background: white;
+    }
+
+    .actors-block li:hover .actors-add-info {
+        visibility: visible;
+        opacity: 1;
     }
 </style>
+
+<script>
+    const score = document.querySelector('.score-of-film').textContent
+    let container = document.querySelector('.score-container')
+    let html = `
+                 <div class="score-img-container" id="dataid">
+                     <img src="../../img/icon/star-score.png" width="32px"/>
+                     <div class="score-counter"><p>dataid</p></div>
+                 </div>
+                 `
+    
+    for(let i = 0; i < 10; i++) {
+        container.innerHTML += html.replaceAll('dataid', (i + 1).toString())
+    }
+
+    document.querySelectorAll('.score-img-container').forEach(item => {
+        item.addEventListener('mouseover', (e) => {
+            const id = +item.id
+
+            document.querySelectorAll('.score-img-container').forEach(img => {
+                if(img.id - 1 < id)
+                    img.querySelector('img').src = '../../img/icon/star-fill-score.png'
+            })
+        })
+
+        document.querySelector('.score-container').addEventListener('mouseout', (e) => {
+            document.querySelectorAll('.score-img-container').forEach(item => {
+                item.querySelector('img').src = '../../img/icon/star-score.png'
+            })
+        })
+    })
+</script>

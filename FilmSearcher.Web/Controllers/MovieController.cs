@@ -1,9 +1,9 @@
 ﻿using FilmSearcher.BLL.Services.Interfaces;
 using FilmSearcher.DAL.Entities;
-using FilmSearcher.DAL.Repositories.Interfaces;
 using FilmSearcher.Web.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace FilmSearcher.Web.Controllers
 {
@@ -15,7 +15,7 @@ namespace FilmSearcher.Web.Controllers
         public MovieController(IMovieService movieService, ISearchService<Movie> searchService)
         {
             _movieService = movieService;
-            _searchService = searchService;;
+            _searchService = searchService;
         }
 
         [HttpGet]
@@ -81,9 +81,9 @@ namespace FilmSearcher.Web.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Admin, Owner")]
-        public async Task<IActionResult> Create(Movie movie/*, List<Actor> actors*/)
+        public async Task<IActionResult> Create(MovieViewModel model)
         {
-            await _movieService.AddAsync(movie);
+            await _movieService.AddAsync(model.Movie);
            /* foreach(var actor in actors)
                 await _actorMovieService.AddAsync(movie.MovieId, actor);*/
             return RedirectToAction(nameof(Movies));
@@ -100,6 +100,7 @@ namespace FilmSearcher.Web.Controllers
             return RedirectToAction(nameof(Movies));
         }
 
+        [HttpGet]
         [Authorize(Roles = "Moderator, Admin, Owner")]
         public async Task<IActionResult> Edit(int id)
         {
@@ -107,32 +108,28 @@ namespace FilmSearcher.Web.Controllers
 
             if (movie == null) return View("NotFound");
 
-            var actors = await _movieService.GetActorsAsync();
+            return View(movie);
+        }
 
-            var viewModel = new MovieViewModel()
-            {
-                Movie = movie,
-                Actors = actors.ToList()
-            };
+        [HttpGet]
+        public async Task<JsonResult> MovieJson(int id)
+        {
+            var movie = await _movieService.GetByIdAsync(id);
 
-            return View(viewModel);
+            return Json(movie);
         }
 
         [HttpPost]
         [Authorize(Roles = "Moderator, Admin, Owner")]
-        public async Task<IActionResult> Edit([Bind("")] MovieViewModel model)
+        public async Task<IActionResult> Edit([FromBody] MovieViewModel model)
         {
-            /*if(!ModelState.IsValid)
-            {
-                return View();
-            }*/
-
             await _movieService.UpdateAsync(model.Movie);
-            await _movieService.AddActorsByIdAsync(model.Movie.MovieId, model.Actors);
+            await _movieService.AddActorsByIdAsync(model.Movie.MovieId, model.ActorsData);
 
-            return RedirectToAction(nameof(Movies));
+            return RedirectToRoute(new { controller = nameof(Movie), action = nameof(Details), id = model.Movie.MovieId });
         }
 
+        [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
             var movie = await _movieService.GetByIdAsync(id);
@@ -144,10 +141,26 @@ namespace FilmSearcher.Web.Controllers
             var viewModel = new MovieViewModel()
             {
                 Movie = movie,
-                Actors = actors,
+                ActorsData = actors,
             };
 
             return View(viewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Bookmark(int id)
+        {
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var movieUser = new MovieUser()
+            {
+                MovieId = id,
+                UserId = int.Parse(currentUserId)
+            };
+
+            await _movieService.AddOrRemoveMovieUserAsync(movieUser);
+
+            return Ok();
         }
     }
 }

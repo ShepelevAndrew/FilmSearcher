@@ -7,19 +7,16 @@
 
 <div class="container-content">
     <div class="container-form">
-        <a asp-controller="Movie" asp-action="Movies" class="form-link-now"><p>Фільми</p></a>
-        <a asp-controller="Actor" asp-action="Actors"><p>Актори</p></a>
-        <a asp-controller="Producer" asp-action="Producers"><p>Продюсери</p></a>
-        <a asp-controller="Cinema" asp-action="Cinemas"><p>Кінотеатри</p></a>
-        <div>
-            <input class="search-input" type="text" name="search" id="search" placeholder="Пошук..." autocomplete="off"  />
-            <div class="list-searcher">
-
-            </div>
+        <div class="container-nav">
+            <a asp-controller="Movie" asp-action="Movies" class="form-link-now"><p>Фільми</p></a>
+            <a asp-controller="Actor" asp-action="Actors"><p>Актори</p></a>
+            <a asp-controller="Producer" asp-action="Producers"><p>Продюсери</p></a>
+            <a asp-controller="Cinema" asp-action="Cinemas"><p>Кінотеатри</p></a>
         </div>
-        @if(User.IsInRole("Admin") || User.IsInRole("Owner")) {
-            <a asp-controller="Movie" asp-action="Create"><div class="add"><p>Add</p></div></a>
-        }
+        <div class="container-search-input">
+            <input class="search-input" type="text" name="search" id="search" placeholder="Пошук..." autocomplete="off"  />
+            <div class="list-searcher"></div>
+        </div>
     </div>
 
     <div class="cards-container">
@@ -31,11 +28,17 @@
                     <div class="card-header">
                         <img src="@movie.ImageURL" alt="img-card" class="card-img">
                         @if(!User.Identity.IsAuthenticated) {
-                            <a asp-controller="Account" asp-action="Register"><div class="card-bookmark"><img src="~/img/icon/bookmark-yellow.png" alt="bookmark"></div></a>
+                            <a asp-controller="Account" asp-action="Register">
+                                <div class="card-bookmark">
+                                    <img src="~/img/icon/bookmark-yellow.png" alt="bookmark">
+                                </div>
+                            </a>
                         }
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <div class="card-bookmark"><img src = "~/img/icon/bookmark-yellow.png" alt="bookmark"></div>
+                            <div class="card-bookmark" data-id="@movie.MovieId">
+                                <img src="~/img/icon/bookmark-yellow.png" alt="bookmark">
+                            </div>
                         }
                         <div class="card-score"><img src="~/img/icon/star.png" alt="star" class="icon"><span>9.4</span></div>
                         <div class="card-icon-details"></div>
@@ -67,6 +70,10 @@
         </div>
     }
     </div>
+    @if (User.IsInRole("Admin") || User.IsInRole("Owner"))
+    {
+        <a asp-controller="Movie" asp-action="Create"><div class="add"><p>Add</p></div></a>
+    }
 </div>
 
 @{
@@ -88,10 +95,30 @@
 <script>
     document.addEventListener("DOMContentLoaded", () => {
 
+        inBookmark()
+
         document.querySelector('#search').addEventListener('input', (e) => {
             const searchString = e.target.value;
 
             search(searchString);
+        })
+
+        document.querySelectorAll('.card-bookmark').forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault()
+                e.stopPropagation()
+
+                const img = item.querySelector('img');
+                const defImgPath = 'http://localhost:5101/img/icon/bookmark-yellow.png'
+                const fillImgPath = 'http://localhost:5101/img/icon/bookmark-fill-yellow.png'
+                if (img.src === defImgPath)
+                    img.src = fillImgPath
+                else if (img.src === fillImgPath)
+                    img.src = defImgPath;
+
+                const movieId = item.dataset.id
+                addBookmark(movieId)
+            })
         })
     })
 
@@ -129,6 +156,37 @@
                         window.location.href = '@Url.Action("Details", "Movie")' + '/' + e.currentTarget.dataset.id;
                     })
                 })
+            })
+        })
+    }
+
+    const addBookmark = (movieId) => {
+        const url = '/Movie/Bookmark/' + movieId
+
+        fetch(url, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+            }
+        }).then(function (res) {
+            console.log(res)
+        })
+    }
+
+    const inBookmark = () => {
+        const url = '/User/InBookmark/'
+
+        fetch(url, {
+        method: "GET",
+        }).then((resp) => {
+            resp.json().then((data) => {
+                for(let i = 0; i < data.length; i++) {
+                    document.querySelectorAll('.card-bookmark').forEach(item => {
+                        if(+data[i].movieId === +item.dataset.id)
+                            item.querySelector('img').src = 'http://localhost:5101/img/icon/bookmark-fill-yellow.png'
+                    })
+                }
             })
         })
     }

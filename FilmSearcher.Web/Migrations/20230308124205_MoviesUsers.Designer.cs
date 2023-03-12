@@ -4,6 +4,7 @@ using FilmSearcher.DAL.EF;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FilmSearcher.Web.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230308124205_MoviesUsers")]
+    partial class MoviesUsers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -118,9 +121,6 @@ namespace FilmSearcher.Web.Migrations
 
                     b.Property<int>("ProducerId")
                         .HasColumnType("int");
-
-                    b.Property<double>("Score")
-                        .HasColumnType("float");
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");

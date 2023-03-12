@@ -18,8 +18,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
-        options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
-        options.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+        options.LoginPath = "/Account/Login";
+        options.AccessDeniedPath = "/Account/Login";
     });
 
 builder.Services.AddScoped<IBaseRepository<User>, UserRepository>()
@@ -27,7 +27,8 @@ builder.Services.AddScoped<IBaseRepository<User>, UserRepository>()
                 .AddScoped<IBaseRepository<Cinema>, CinemaRepository>()
                 .AddScoped<IBaseRepository<Movie>, MovieRepository>()
                 .AddScoped<IBaseRepository<Producer>, ProducerRepository>()
-                .AddScoped<IActorMovieRepository, ActorMovieRepository>();
+                .AddScoped<IActorMovieRepository, ActorMovieRepository>()
+                .AddScoped<IMovieUserRepository, MovieUserRepository>();
 
 builder.Services.AddScoped<ISearchService<Actor>, SearchActorService>()
                 .AddScoped<ISearchService<Movie>, SearchMovieService>()
@@ -59,6 +60,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Movie}/{action=Movies}/{id?}");
 
 app.Run();

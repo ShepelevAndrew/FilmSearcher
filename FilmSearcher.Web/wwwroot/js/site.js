@@ -1,4 +1,14 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿const btn = document.querySelector('.container-user-btn')
+const profile = document.querySelector('.container-user-info')
 
-// Write your JavaScript code.
+btn.addEventListener('click', (e) => {
+    profile.classList.add('show')
+})
+
+document.addEventListener('click', (e) => {
+    const isClickInside = profile.contains(event.target) || btn.contains(event.target);
+
+    if (!isClickInside) {
+        profile.classList.remove('show')
+    }
+})

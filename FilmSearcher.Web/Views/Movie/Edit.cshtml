@@ -1,80 +1,76 @@
 ﻿@using FilmSearcher.DAL.Domain.Enum;
-@model MovieViewModel
+@model Movie
 
 @{
     ViewData["Title"] = "Edit movie";
 }
 
-<form asp-controller="Movie" asp-action="Edit" method="post">
-    <div class="container">
+<div class="container-form-movie">
+    <div>
         <div>
-            <div>
-                <label>ImageURL:</label>
-                <input asp-for="Movie.ImageURL" type="text" />
-            </div>
-            <img style="width: 300px; margin-top: 20px" src="@Model.Movie.ImageURL" />
+            <label>ImageURL:</label>
+            <input id="imageUrl" asp-for="ImageURL" type="text" />
         </div>
-        <div class="container-info">
-            <div>
-                <label>Id:</label>
-                <input asp-for="Movie.MovieId" type="text" />
-            </div>
-            <div>
-                <label>Name:</label>
-                <input asp-for="Movie.Name" type="text" />
-            </div>
-            <div>
-                <label>Category:</label>
-                <select asp-for="Movie.Category">
-                    @foreach (var item in Enum.GetValues(typeof(MovieCategory)))
-                    {
-                        int num = (int)item;
-                        MovieCategory name = (MovieCategory)item;
-
-                        <option value="@num">@name</option>
-                    }
-                </select>
-            </div>
-            <div>
-                <label>Start:</label>
-                <input asp-for="Movie.StartDate" type="date" />
-            </div>
-            <div>
-                <label>End:</label>
-                <input asp-for="Movie.EndDate" type="date" />
-            </div>
-            <div>
-                <label>Producer:</label>
-                <input asp-for="Movie.ProducerId" type="text" />
-            </div>
-            <div>
-                <label>Actors:</label>
-                <div class="searcher-block">
-                    <div class="list-actors"></div>
-                    <input type="text" name="search" id="search" placeholder="Актори..." autocomplete="off" />
-                    <div class="list-searcher list-searcher-actors" id="search-block"></div>
-                </div>
-            </div>
-            <div>
-                <label>Cinema:</label>
-                <input asp-for="Movie.CinemaId" type="text" />
-            </div>
-            <div>
-                <label>Description:</label>
-                <textarea asp-for="Movie.Description" style="width: 100%; height: 300px;"></textarea>
-                <span class="chars-current">0</span>
-            </div>
-            <div class="container-buttons">
-                <input class="button update" type="submit" value="Update" />
-                @if(User.IsInRole("Admin"))
+        <img style="width: 300px; margin-top: 20px" src="@Model.ImageURL" />
+    </div>
+    <div class="container-info">
+        <div>
+            <label>Id:</label>
+            <input id="id" asp-for="MovieId" type="text" />
+        </div>
+        <div>
+            <label>Name:</label>
+            <input id="name" asp-for="Name" type="text" />
+        </div>
+        <div>
+            <label>Category:</label>
+            <select id="category" asp-for="Category">
+                @foreach (var item in Enum.GetValues(typeof(MovieCategory)))
                 {
-                    <a asp-action="Delete" asp-route-id="@Model.Movie.MovieId"><div class="button delete">Delete</div></a>
+                    int num = (int)item;
+                    MovieCategory name = (MovieCategory)item;
+
+                    <option value="@num">@name</option>
                 }
-                <a asp-action="Movies"><div class="button show">Show all</div></a>
+            </select>
+        </div>
+        <div>
+            <label>Start:</label>
+            <input id="startDate" asp-for="StartDate" type="date" />
+        </div>
+        <div>
+            <label>End:</label>
+            <input id="endDate" asp-for="EndDate" type="date" />
+        </div>
+        <div>
+            <label>Producer:</label>
+            <input id="producerId" asp-for="ProducerId" type="text" />
+        </div>
+        <div>
+            <label>Actors:</label>
+            <div class="searcher-block">
+                <div class="list-actors"></div>
+                <input type="text" name="search" id="search" placeholder="Актори..." autocomplete="off" />
+                <div class="list-searcher list-searcher-actors" id="search-block"></div>
             </div>
+        </div>
+        <div>
+            <label>Cinema:</label>
+            <input id="cinemaId" asp-for="CinemaId" type="text" />
+        </div>
+        <div>
+            <label>Description:</label>
+            <textarea id="description" asp-for="Description" style="width: 100%; height: 300px;"></textarea>
+        </div>
+        <div class="container-buttons">
+            <input class="button update" type="submit" value="Update" />
+            @if(User.IsInRole("Admin") || User.IsInRole("Owner"))
+            {
+                <a asp-action="Delete" asp-route-id="@Model.MovieId"><div class="button delete">Delete</div></a>
+            }
         </div>
     </div>
-</form>
+</div>
 
 <style>
     a {
@@ -86,8 +82,10 @@
         color: black;
     }
 
-    .container {
+    .container-form-movie {
         display: flex;
+        justify-content: center;
+        margin: 20px 0;
     }
 
     .container-info {
@@ -132,18 +130,19 @@
         transition: .3s;
     }
 
-    .show:hover {
-        color: white;
-        background: #6f42c1;
-        transition: .3s;
-    }
-
     .searcher-block {
         position: relative;
         width: 400px;
         border: 1px solid #999;
         padding: 4px;
         border-radius: 4px;
+        cursor: text;
+    }
+
+    .searcher-block-click {
+        border: 1px solid #0088CC;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
     }
 
     .list-actors {
@@ -164,10 +163,19 @@
     }
 
     .list-searcher-actors {
-        border: 1px solid #999;
+        border: 1px solid #0088CC;
+        border-radius: 0px;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
         margin-top: 4px;
         margin-left: -4.5px;
-        width: 398px;
+        width: calc(100% - 10px);
+        box-shadow: none;
+    }
+
+    .list-searcher-actors:empty {
+        background: transparent;
+        border: none;
     }
 
     .selected-item {
@@ -195,6 +203,7 @@
 
     .delete-btn img {
         width: 8px;
+        transition: .1s;
     }
 </style>
 <script src="~/js/movie-edit.js"></script>

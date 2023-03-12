@@ -1,0 +1,16 @@
+﻿@model UserViewModel
+
+<h2>@Model.User.Name</h2>
+
+<div>
+@foreach(var movie in Model.Movies)
+{
+    <div>
+        <img src="@movie.ImageURL" width="150px" />
+        <ul>
+            <li>@movie.Name</li>
+            <li>@movie.Category</li>
+        </ul>
+    </div>
+}
+</div>

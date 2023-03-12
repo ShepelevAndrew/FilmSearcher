@@ -41,6 +41,14 @@
       "PackagePath": "staticwebassets\\img\\icon\\edit.png"
     },
     {
+      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\icon\\f.png",
+      "PackagePath": "staticwebassets\\img\\icon\\f.png"
+    },
+    {
+      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\icon\\logout.png",
+      "PackagePath": "staticwebassets\\img\\icon\\logout.png"
+    },
+    {
       "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\icon\\menu-dots.png",
       "PackagePath": "staticwebassets\\img\\icon\\menu-dots.png"
     },
@@ -53,6 +61,14 @@
       "PackagePath": "staticwebassets\\img\\icon\\search.png"
     },
     {
+      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\icon\\star-fill-score.png",
+      "PackagePath": "staticwebassets\\img\\icon\\star-fill-score.png"
+    },
+    {
+      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\icon\\star-score.png",
+      "PackagePath": "staticwebassets\\img\\icon\\star-score.png"
+    },
+    {
       "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\icon\\star.png",
       "PackagePath": "staticwebassets\\img\\icon\\star.png"
     },
@@ -63,6 +79,10 @@
     {
       "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\picture\\360_F_125579108_cKIL8gnBgRKqcLeyG03llZNaeFOjoCLH.jpg",
       "PackagePath": "staticwebassets\\img\\picture\\360_F_125579108_cKIL8gnBgRKqcLeyG03llZNaeFOjoCLH.jpg"
+    },
+    {
+      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\js\\movie-edit.js",
+      "PackagePath": "staticwebassets\\js\\movie-edit.js"
     },
     {
       "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\js\\site.js",

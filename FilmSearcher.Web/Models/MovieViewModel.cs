@@ -4,7 +4,7 @@ namespace FilmSearcher.Web.Models
 {
     public class MovieViewModel
     {
+        public List<Actor> ActorsData { get; set; }
         public Movie Movie { get; set; }
-        public List<Actor> Actors { get; set; }
     }
 }

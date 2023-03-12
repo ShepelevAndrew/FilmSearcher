@@ -45,7 +45,77 @@
     color: #32B76C;
     border: #32B76C solid 1px;
 }
-
+.container-user-btn {
+    cursor: pointer;
+}
+.container-user-info {
+    width: 250px;
+    text-align: center;
+    position: absolute;
+    top: 45px;
+    right: 40px;
+    background: white;
+    visibility: hidden;
+    opacity: 0;
+    transition: .3s;
+    box-shadow: rgb(60 64 67 / 30%) 0px -1px 2px 0px, rgb(60 64 67 / 15%) 0px -2px 6px 2px;
+    border-radius: 5px;
+    z-index: 999;
+}
+.user-info-back-pic {
+    background: #02393E;
+    height: 70px;
+    width: 100%;
+    border-top-left-radius: 5px;
+}
+.user-info-back-pic::after {
+    content: '';
+    height: 14px;
+    width: 14px;
+    display: inline-block;
+    background: url(../img/icon/pencil.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    right: 20px;
+    margin-top: 45px;
+}
+.user-profile-photo {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 100%;
+    border: 3px solid white;
+    margin-top: -40px;
+}
+.user-info-main {
+    margin-top: 5px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #DADCE0;
+}
+.container-user-info ul {
+    padding: 0px;
+    margin: 15px 0;
+}
+.container-user-info ul li {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+    margin: 0px !important;
+    list-style: none;
+}
+.container-user-info ul li:hover {
+    background: #E3E3E4;
+    cursor: pointer;
+}
+.container-user-info ul img {
+    width: 14px;
+    margin: 0 15px;
+}
+.show {
+    opacity: 1;
+    visibility: visible;
+}
 
 /*Form*/
 .container-form {
@@ -54,14 +124,18 @@
     align-items: center;
     margin: 10px 0px 10px 0px;
 }
-.container-form a:hover {
-    border-bottom: 1px solid black;
+.container-nav {
+    display: flex;
+    grid-column-gap: 50px;
 }
-.container-form a:last-child:hover {
-    border: none;
+.container-nav a:hover {
+    border-bottom: 1px solid black;
 }
 .form-link-now {
     border-bottom: 1px solid black;
+}
+.container-search-input {
+    position: relative;
 }
 .search-input {
     width: 300px;
@@ -79,18 +153,36 @@
     padding: 0px;
     padding-left: 35px;
 }
-.search-input:focus {
-    border: 1px solid #000;
+.search-input:focus,
+.search-input:active {
+    border: 1px solid #999;
 }
 .list-searcher {
     position: absolute;
     z-index: 999;
     background: white;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
     padding: 5px 5px 0px 5px;
     max-height: 242px;
+    width: calc(100% - 12px);
     overflow-y: auto;
+    border-radius: 10px;
+    box-shadow: 0 0px 20px -2px rgb(0 0 0 / 40%);
+}
+.list-searcher::-webkit-scrollbar {
+    width: 8px;
+}
+.list-searcher::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+.list-searcher::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+.list-searcher::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+.list-searcher:empty {
+    visibility: hidden;
 }
 .search-item {
     display: flex;
@@ -195,14 +287,7 @@ span {
 }
 .card-bookmark img {
     width: 35px;
-    height: 35px;
-}
-.card-bookmark:hover {
-    width: 35px;
-    height: 35px;
-    display: inline-block;
-    background-image: url("../img/icon/bookmark-fill-yellow.png");
-    background-size: 35px;
+    height: 35px;    
 }
 .card-score {
     padding: 4px 9px 4px 6px;
