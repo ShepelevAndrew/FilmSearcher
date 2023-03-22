@@ -27,6 +27,13 @@ namespace FilmSearcher.DAL.Repositories.Implementations
             await _dbContext.SaveChangesAsync();
         }
 
+        public async Task DeleteByActorIdAsync(int id)
+        {
+            var actorMovie = await _dbContext.ActorsMovies.FirstOrDefaultAsync(am => am.ActorId == id);
+            _dbContext.ActorsMovies.Remove(actorMovie);
+            await _dbContext.SaveChangesAsync();
+        }
+
         public async Task<IEnumerable<ActorMovie>> GetAllAsync()
         {
             var actorsMovies = await _dbContext.ActorsMovies.ToListAsync();
@@ -44,7 +51,7 @@ namespace FilmSearcher.DAL.Repositories.Implementations
             foreach (var actor in actorMovie)
                 actorsId.Add(actor.ActorId);
 
-            for(int i = 0; i < actorsId.Count; i++)
+            for (int i = 0; i < actorsId.Count; i++)
                 actorsByMovie.Add(actors.FirstOrDefault(a => a.ActorId == actorsId[i]));
 
             return actorsByMovie;
@@ -54,8 +61,10 @@ namespace FilmSearcher.DAL.Repositories.Implementations
         {
             var actorMovie = _dbContext.ActorsMovies.ToList().FindAll(am => am.ActorId == id);
             var movies = new List<Movie>();
+
             foreach (var movie in actorMovie)
                 movies.Add(movie.Movie);
+
             return movies;
         }
 

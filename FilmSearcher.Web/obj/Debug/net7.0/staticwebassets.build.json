@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "vMfsUkhxOnJ7QgDDLI8Iw4cNZqtlRcGJ84ccv1WM8Xc=",
+  "Hash": "RrSLA2I+0nmdYF1p7d5kyM/Oi7WJ65sD8dJVmzrLMtA=",
   "Source": "FilmSearcher.Web",
   "BasePath": "_content/FilmSearcher.Web",
   "Mode": "Default",
@@ -255,6 +255,23 @@
       "OriginalItemSpec": "wwwroot\\img\\icon\\menu-dots.png"
     },
     {
+      "Identity": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\icon\\pencil.png",
+      "SourceId": "FilmSearcher.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\",
+      "BasePath": "_content/FilmSearcher.Web",
+      "RelativePath": "img/icon/pencil.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\icon\\pencil.png"
+    },
+    {
       "Identity": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\icon\\remove.png",
       "SourceId": "FilmSearcher.Web",
       "SourceType": "Discovered",
@@ -304,6 +321,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\icon\\star-fill-score.png"
+    },
+    {
+      "Identity": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\icon\\star-grey-score.png",
+      "SourceId": "FilmSearcher.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\",
+      "BasePath": "_content/FilmSearcher.Web",
+      "RelativePath": "img/icon/star-grey-score.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\icon\\star-grey-score.png"
     },
     {
       "Identity": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\icon\\star-score.png",
@@ -372,6 +406,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\picture\\360_F_125579108_cKIL8gnBgRKqcLeyG03llZNaeFOjoCLH.jpg"
+    },
+    {
+      "Identity": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\picture\\background-dark.jpg",
+      "SourceId": "FilmSearcher.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\",
+      "BasePath": "_content/FilmSearcher.Web",
+      "RelativePath": "img/picture/background-dark.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\picture\\background-dark.jpg"
+    },
+    {
+      "Identity": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\picture\\background-light.png",
+      "SourceId": "FilmSearcher.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\",
+      "BasePath": "_content/FilmSearcher.Web",
+      "RelativePath": "img/picture/background-light.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\picture\\background-light.png"
     },
     {
       "Identity": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\js\\movie-edit.js",

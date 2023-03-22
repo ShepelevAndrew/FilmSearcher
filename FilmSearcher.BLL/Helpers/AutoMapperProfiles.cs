@@ -10,6 +10,7 @@ namespace FilmSearcher.BLL.Helpers
         {
             CreateMap<User, UserDTO>();
             CreateMap<UserDTO, User>();
+            CreateMap<MovieDTO, Movie>();
         }
     }
 }

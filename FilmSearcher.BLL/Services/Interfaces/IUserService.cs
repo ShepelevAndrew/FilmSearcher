@@ -11,8 +11,12 @@ namespace FilmSearcher.BLL.Services.Interfaces
 
         Task<IEnumerable<UserDTO>> GetUsers();
 
+        Task<UserDTO> GetUserById(int id);
+
         Task<bool> DeleteUser(int id);
 
         Task<bool> UpdateUser(UserDTO user);
+
+        IEnumerable<MovieDTO> GetMoviesByUserId(int Id);
     }
 }

@@ -4,19 +4,33 @@ using FilmSearcher.BLL.Services.Interfaces;
 using FilmSearcher.DAL.Domain.Enum;
 using FilmSearcher.DAL.Entities;
 using FilmSearcher.DAL.Repositories.Interfaces;
-using Microsoft.AspNetCore.Mvc;
 
 namespace FilmSearcher.BLL.Services.Implementations
 {
     public class UserService : IUserService
     {
         private readonly IBaseRepository<User> _userRepository;
+        private readonly IMovieUserRepository _movieUserRepository;
         private readonly IMapper _mapper;
 
-        public UserService(IBaseRepository<User> userService, IMapper mapper)
+        public UserService(IBaseRepository<User> userService, IMovieUserRepository movieUserRepository, IMapper mapper)
         {
             _userRepository = userService;
+            _movieUserRepository = movieUserRepository;
             _mapper = mapper;
+        }
+
+        public async Task<UserDTO> GetUserById(int id)
+        {
+            var user = await _userRepository.GetByIdAsync(id);
+
+            if(user != null) {
+                var userDto = _mapper.Map<UserDTO>(user);
+
+                return userDto;
+            }
+
+            return null;
         }
 
         public async Task Create(UserDTO model)
@@ -62,6 +76,30 @@ namespace FilmSearcher.BLL.Services.Implementations
             var usersDto = _mapper.Map<IEnumerable<UserDTO>>(users);
 
             return usersDto;
+        }
+
+        public IEnumerable<MovieDTO> GetMoviesByUserId(int Id)
+        {
+            var movies = _movieUserRepository.GetMoviesByUserId(Id);
+            var moviesDto = new List<MovieDTO>();
+
+            foreach (var movie in movies)
+            {
+                MovieDTO movieDTO = new()
+                {
+                    MovieId = movie.MovieId,
+                    Name = movie.Name,
+                    Description = movie.Description,
+                    ImageURL = movie.ImageURL,
+                    StartDate = movie.StartDate,
+                    EndDate = movie.EndDate,
+                    Category = movie.Category,
+                };
+
+                moviesDto.Add(movieDTO);
+            }
+
+            return moviesDto;
         }
     }
 }

@@ -5,59 +5,62 @@
 }
 
 <div class="container">
-    <div>
-        <img style="width: 300px; margin-top: 20px" src="@Model.Movie.ImageURL" />
+    <div class="film-info">
+        <div>
+            <img style="width: 300px; margin-top: 20px" src="@Model.Movie.ImageURL" />
+        </div>
+        <div class="container-info">
+            <div>
+                <span>@Model.Movie.Name</span>
+            </div>
+            <div>
+                <label>Category:</label>
+                <span>@Model.Movie.Category</span>
+            </div>
+            <div>
+                <label>Start:</label>
+                <span>@Model.Movie.StartDate</span>
+            </div>
+            <div>
+                <label>End:</label>
+                <span>@Model.Movie.EndDate</span>
+            </div>
+            <div>
+                <label>Producer:</label>
+                <span>@Model.Movie.ProducerId</span>
+            </div>
+            <div>
+                <label>Actors:</label>
+                <ul class="actors-block">
+                    @foreach (var actor in @Model.ActorsData) {
+                        <li>
+                            <div class="actors-add-info">
+                                <img src="@actor.ProfilePictureURL" height="70px">
+                                <span>@actor.FullName</span>
+                            </div>
+                            <a asp-controller="Actor" asp-action="Details" asp-route-id="@actor.ActorId">@actor.FullName</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+            <div>
+                <label>Cinema:</label>
+                <span>@Model.Movie.CinemaId</span>
+            </div>
+            <div>
+                <label>Description:</label>
+                <p>@Model.Movie.Description</p>
+            </div>
+        </div>
     </div>
-    <div class="container-info">
-        <div>
-            <span>@Model.Movie.Name</span>
-        </div>
-        <div>
-            <label>Category:</label>
-            <span>@Model.Movie.Category</span>
-        </div>
-        <div>
-            <label>Start:</label>
-            <span>@Model.Movie.StartDate</span>
-        </div>
-        <div>
-            <label>End:</label>
-            <span>@Model.Movie.EndDate</span>
-        </div>
-        <div>
-            <label>Producer:</label>
-            <span>@Model.Movie.ProducerId</span>
-        </div>
-        <div>
-            <label>Actors:</label>
-            <ul class="actors-block">
-                @foreach (var actor in @Model.ActorsData) {
-                    <li>
-                        <div class="actors-add-info">
-                            <img src="@actor.ProfilePictureURL" height="70px">
-                            <span>@actor.FullName</span>
-                        </div>
-                        <a asp-controller="Actor" asp-action="Details" asp-route-id="@actor.ActorId">@actor.FullName</a>
-                    </li>
-                }
-            </ul>
-        </div>
-        <div>
-            <label>Cinema:</label>
-            <span>@Model.Movie.CinemaId</span>
-        </div>
-        <div>
-            <label>Description:</label>
-            <p>@Model.Movie.Description</p>
-        </div>
-    </div>
-</div>
-<div class="container">
-    <div class="score-container">
 
-    </div>
-    <div class="score-of-film">
-        <span>5</span>
+    <div class="score">
+        <div class="score-container">
+
+        </div>
+        <div class="score-of-film">
+            <span>@Model.MovieUser.MovieScore</span>
+        </div>
     </div>
 </div>
 
@@ -71,26 +74,34 @@
         color: black;
     }
 
-    .container {
+    .film-info {
         display: flex;
         justify-content: center;
+    }
+
+    .score {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .score-container {
         display: flex;
-        justify-content: center;
         text-align: center;
     }
 
-    .score-img-container:first-child {
-        padding-left: 0;
+    .score-img-container:last-child {
+        padding-right: 0;
     }
     .score-img-container {
-        padding-left: 20px;
+        padding-right: 10px;
     }
 
-    .container img:hover {
+    .score-img-container:hover {
         cursor: pointer;
+    }
+    .score-counter {
+        color: #CCC;
     }
 
     .container-info {
@@ -177,7 +188,7 @@
     let container = document.querySelector('.score-container')
     let html = `
                  <div class="score-img-container" id="dataid">
-                     <img src="../../img/icon/star-score.png" width="32px"/>
+                     <img src="../../img/icon/star-grey-score.png" width="32px"/>
                      <div class="score-counter"><p>dataid</p></div>
                  </div>
                  `
@@ -190,16 +201,43 @@
         item.addEventListener('mouseover', (e) => {
             const id = +item.id
 
-            document.querySelectorAll('.score-img-container').forEach(img => {
-                if(img.id - 1 < id)
-                    img.querySelector('img').src = '../../img/icon/star-fill-score.png'
+            document.querySelectorAll('.score-img-container').forEach(item => {
+                if(item.id - 1 < id) {
+                    item.querySelector('img').src = '../../img/icon/star-fill-score.png'
+                    item.querySelector('.score-counter').style.color = '#FFC107'
+                }
             })
         })
 
         document.querySelector('.score-container').addEventListener('mouseout', (e) => {
             document.querySelectorAll('.score-img-container').forEach(item => {
-                item.querySelector('img').src = '../../img/icon/star-score.png'
+                item.querySelector('img').src = '../../img/icon/star-grey-score.png'
+                item.querySelector('.score-counter').style.color = '#CCC'
             })
         })
+
+        item.addEventListener('click', (e) => {
+            const score = +item.id
+
+            console.log(score)
+            addScore(score)
+        })
     })
+
+    const addScore = (score) => {
+        let url = window.location.href
+        const movieId = url.substring(url.lastIndexOf('/') + 1)
+
+        url = '/Movie/Score?id=' + movieId + '&score=' + score
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }).then(function (res) {
+            console.log(res)
+        })
+    }
 </script>

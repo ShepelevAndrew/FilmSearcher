@@ -142,6 +142,12 @@ namespace FilmSearcher.Web.Migrations
                     b.Property<int>("MovieId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("InBookmark")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("MovieScore")
+                        .HasColumnType("int");
+
                     b.HasKey("UserId", "MovieId");
 
                     b.HasIndex("MovieId");

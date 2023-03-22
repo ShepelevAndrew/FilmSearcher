@@ -11,9 +11,11 @@ namespace FilmSearcher.DAL.Entities
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public MovieCategory Category { get; set; }
+        public double Score { get; set; }
 
         //Relationships
         public List<ActorMovie> ActorsMovies { get; set; }
+        public List<MovieUser> MoviesUsers { get; set; }
 
         //Cinema
         public int CinemaId { get; set; }

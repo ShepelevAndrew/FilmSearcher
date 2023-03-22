@@ -12,6 +12,7 @@ namespace FilmSearcher.DAL.EF
         public DbSet<Cinema> Cinemas { get; set; }
         public DbSet<Movie> Movies { get; set; }
         public DbSet<ActorMovie> ActorsMovies { get; set; }
+        public DbSet<MovieUser> MoviesUsers { get; set; } 
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
@@ -23,6 +24,7 @@ namespace FilmSearcher.DAL.EF
             builder.ApplyConfiguration(new CinemaTypeConfiguration());
             builder.ApplyConfiguration(new MovieTypeConfiguration());
             builder.ApplyConfiguration(new ActorMovieTypeConfiguration());
+            builder.ApplyConfiguration(new MovieUserTypeConfiguration());
 
             base.OnModelCreating(builder);
         }

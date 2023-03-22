@@ -1,19 +1,14 @@
-﻿using FilmSearcher.DAL.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using FilmSearcher.BLL.Models;
 using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FilmSearcher.BLL.Services.Interfaces
 {
     public interface IAccountService
     {
-        Task<ClaimsIdentity> Register(User model);
+        Task<ClaimsIdentity> Register(UserDTO model);
 
-        Task<ClaimsIdentity> Login(User model);
+        Task<ClaimsIdentity> Login(UserDTO model);
 
-        Task<bool> ChangePassword(User model);
+        Task<bool> ChangePassword(UserDTO model);
     }
 }

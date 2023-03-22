@@ -1,4 +1,5 @@
-﻿using FilmSearcher.BLL.Services.Interfaces;
+﻿using FilmSearcher.BLL.Models;
+using FilmSearcher.BLL.Services.Interfaces;
 using FilmSearcher.DAL.Entities;
 using FilmSearcher.Web.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -21,7 +22,11 @@ namespace FilmSearcher.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Movies()
         {
-            var movies = await _movieService.GetAllAsync();
+            var currentUserId = "0";
+            if(User.FindFirstValue(ClaimTypes.NameIdentifier) != null)
+                currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var movies = await _movieService.GetAllAsync(int.Parse(currentUserId));
 
             #region sort
             var sortMovies = movies.OrderByDescending(m => m.StartDate).ToList();
@@ -138,16 +143,20 @@ namespace FilmSearcher.Web.Controllers
 
             var actors = _movieService.GetActorsById(id).ToList();
 
+            var movieUser = await _movieService.GetMovieUserByMovieId(id);
+
             var viewModel = new MovieViewModel()
             {
                 Movie = movie,
                 ActorsData = actors,
+                MovieUser = movieUser
             };
 
             return View(viewModel);
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Bookmark(int id)
         {
             var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -155,10 +164,28 @@ namespace FilmSearcher.Web.Controllers
             var movieUser = new MovieUser()
             {
                 MovieId = id,
-                UserId = int.Parse(currentUserId)
+                UserId = int.Parse(currentUserId),
             };
 
-            await _movieService.AddOrRemoveMovieUserAsync(movieUser);
+            await _movieService.AddOrRemoveInBookmarkAsync(movieUser);
+
+            return Ok();
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> Score(int id, int score)
+        {
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var movieUser = new MovieUser()
+            {
+                MovieId = id,
+                UserId = int.Parse(currentUserId),
+                MovieScore = score,
+            };
+
+            await _movieService.AddOrUpdateScore(movieUser);
 
             return Ok();
         }

@@ -70,7 +70,7 @@ namespace FilmSearcher.Web.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<JsonResult> InBookmark()
+        public JsonResult InBookmark()
         {
             var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 

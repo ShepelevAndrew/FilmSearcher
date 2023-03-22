@@ -1,4 +1,5 @@
 ﻿using FilmSearcher.BLL.Helpers;
+using FilmSearcher.BLL.Models;
 using FilmSearcher.BLL.Services.Interfaces;
 using FilmSearcher.DAL.Domain.Enum;
 using FilmSearcher.DAL.Entities;
@@ -17,7 +18,7 @@ namespace FilmSearcher.BLL.Services.Implementations
             _userRepository = userRepository;
         }
 
-        public async Task<ClaimsIdentity> Register(User model)
+        public async Task<ClaimsIdentity> Register(UserDTO model)
         {
             var users = await _userRepository.GetAllAsync();
             var user = users.ToList().FirstOrDefault(x => x.Name == model.Name);
@@ -41,7 +42,7 @@ namespace FilmSearcher.BLL.Services.Implementations
             return result;
         }
 
-        public async Task<ClaimsIdentity> Login(User model)
+        public async Task<ClaimsIdentity> Login(UserDTO model)
         {
             var users = await _userRepository.GetAllAsync();
             var user = users.FirstOrDefault(x => x.Name == model.Name);
@@ -64,6 +65,7 @@ namespace FilmSearcher.BLL.Services.Implementations
         {
             var claims = new List<Claim>
             {
+                new Claim(ClaimTypes.NameIdentifier.ToString(), user.UserId.ToString()),
                 new Claim(ClaimsIdentity.DefaultNameClaimType, user.Name),
                 new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role.ToString())
             };
@@ -71,7 +73,7 @@ namespace FilmSearcher.BLL.Services.Implementations
                 ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
         }
 
-        public Task<bool> ChangePassword(User model)
+        public Task<bool> ChangePassword(UserDTO model)
         {
             throw new NotImplementedException();
         }

@@ -53,6 +53,10 @@
       "PackagePath": "staticwebassets\\img\\icon\\menu-dots.png"
     },
     {
+      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\icon\\pencil.png",
+      "PackagePath": "staticwebassets\\img\\icon\\pencil.png"
+    },
+    {
       "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\icon\\remove.png",
       "PackagePath": "staticwebassets\\img\\icon\\remove.png"
     },
@@ -63,6 +67,10 @@
     {
       "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\icon\\star-fill-score.png",
       "PackagePath": "staticwebassets\\img\\icon\\star-fill-score.png"
+    },
+    {
+      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\icon\\star-grey-score.png",
+      "PackagePath": "staticwebassets\\img\\icon\\star-grey-score.png"
     },
     {
       "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\icon\\star-score.png",
@@ -79,6 +87,14 @@
     {
       "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\picture\\360_F_125579108_cKIL8gnBgRKqcLeyG03llZNaeFOjoCLH.jpg",
       "PackagePath": "staticwebassets\\img\\picture\\360_F_125579108_cKIL8gnBgRKqcLeyG03llZNaeFOjoCLH.jpg"
+    },
+    {
+      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\picture\\background-dark.jpg",
+      "PackagePath": "staticwebassets\\img\\picture\\background-dark.jpg"
+    },
+    {
+      "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\img\\picture\\background-light.png",
+      "PackagePath": "staticwebassets\\img\\picture\\background-light.png"
     },
     {
       "Id": "Q:\\GitHub\\FilmSearcherWebApp\\FilmSearcher.Web\\wwwroot\\js\\movie-edit.js",

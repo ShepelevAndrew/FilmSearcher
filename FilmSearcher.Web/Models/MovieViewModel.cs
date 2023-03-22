@@ -6,5 +6,6 @@ namespace FilmSearcher.Web.Models
     {
         public List<Actor> ActorsData { get; set; }
         public Movie Movie { get; set; }
+        public MovieUser MovieUser { get; set; }
     }
 }

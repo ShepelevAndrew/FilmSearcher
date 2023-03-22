@@ -44,10 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
         config.movie.endDate = document.querySelector('#endDate').value
         config.movie.cinemaId = parseInt(document.querySelector('#cinemaId').value)
         config.movie.producerId = parseInt(document.querySelector('#producerId').value)
-/*        config.movie = {
-            movieId: +document.querySelector('#id').value,
-
-        }*/
 
         updateRequest()
     })
